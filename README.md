@@ -2,7 +2,7 @@
 
 #freemarket_sample_75d DB設計図
 
-##users_model
+##userテーブル
 |Column|Type|Option|
 |------|----|------|
 |family_name|string|null: false|
@@ -13,12 +13,13 @@
 |email|text|null: false|
 |password|text|null: false|
 |birthday|date|null: false|
+- has_many :adresss, through: :user_adresss
 - has_many :user_adresss
 - has_many :adresss
 - has_many :products
 - has_many :credits
 
-##user_adress_model
+##user_adressテーブル
 |Column|Type|Option|
 |------|----|------|
 |user_id|integer|null: false, foreign_key: true|
@@ -27,7 +28,7 @@
 - belongs_to :adress 
 
 
-##aderess_model 
+##aderessテーブル
 |Column|Type|Option|
 |------|----|------|
 |post_code|integer|null: false|
@@ -36,10 +37,10 @@
 |block|string|null: false|
 |building|text|null: false|
 |telephone_number|integer|null: false|
-- has_many :user_adress
-- has_many :users
+- has_many :users, through: :user_adresss
+- has_many :user_adresss
 
-##product_model
+##productテーブル
 |Column|Type|Option|
 |------|----|------|
 |product_name|text|null: false|
@@ -57,14 +58,14 @@
 - has_many :images
 
 
-##image_model
+##imageテーブル
 |Column|Type|Option|
 |------|----|------|
 |image|text|null: false|
 |product_id|integer|null: false, foreign_key: true|
 - belongs_to :product
 
-##credit_card
+##credit_cardテーブル
 |Column|Type|Option|
 |------|----|------|  
 |card_owner|string|null: false|
@@ -79,25 +80,4 @@
 
 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
