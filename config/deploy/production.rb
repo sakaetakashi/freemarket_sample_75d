@@ -1,1 +1,1 @@
-server '自身のElasticIP', user: 'ec2-user', roles: %w{app db web}
+server '54.249.101.59', user: 'ec2-user', roles: %w{app db web}
