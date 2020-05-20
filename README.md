@@ -13,12 +13,11 @@
 |email|text|null: false|
 |password|text|null: false|
 |birthday|date|null: false|
-- has_many :adresses
-- has_many :products
-- has_many :credits
-- belongs_to :adress
+- has_many :products, dependent: :destroy
+- has_many :credits, dependent: :destroy
+- has_many :adresses, dependent: :destroy
 
-##aderessテーブル
+##addressテーブル
 |Column|Type|Option|
 |------|----|------|
 |post_code|integer|null: false|
@@ -28,7 +27,7 @@
 |building|text|null: false|
 |telephone_number|integer|null: false|
 |user_id|integer|null: false|
-- has_many :users
+- belongs_to :user
 
 ##productテーブル
 |Column|Type|Option|
@@ -45,7 +44,7 @@
 |region|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 - belongs_to :user
-- has_many :images
+- has_many :images, dependent: :destroy
 
 
 ##imageテーブル
