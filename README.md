@@ -36,7 +36,7 @@
 |category|string|null: false|
 |explain|text|null: false|
 |price|integer|null: false|
-|brand|text||
+|brand|string||
 |condition|text|null: false|
 |arrive_at|date|null: false|
 |shipping_method|string|null: false|
