@@ -43,8 +43,10 @@
 |shipping_fee|integer|null: false|
 |region|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
 - belongs_to :user
 - has_many :images, dependent: :destroy
+- has_many :categories, dependent: :destroy
 
 
 ##imageテーブル
@@ -66,7 +68,12 @@
 |user_id|integer|null: false, foreign_key: true|
 - belongs_to :user
 
-
-
+##categoryテーブル
+|Column|Type|Option|
+|------|----|------|  
+|genre|string|null: false|
+|subgenre|string|null: false|
+|detail|string|null: false|
+- belongs_to :product
 
 
