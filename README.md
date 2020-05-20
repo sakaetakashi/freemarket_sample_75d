@@ -13,20 +13,10 @@
 |email|text|null: false|
 |password|text|null: false|
 |birthday|date|null: false|
-- has_many :adresss, through: :user_adresss
-- has_many :user_adresss
-- has_many :adresss
+- has_many :adresses
 - has_many :products
 - has_many :credits
-
-##user_adressテーブル
-|Column|Type|Option|
-|------|----|------|
-|user_id|integer|null: false, foreign_key: true|
-|adress_id|integer|null: false, foreign_key: true|
-- belongs_to :user
-- belongs_to :adress 
-
+- belongs_to :adress
 
 ##aderessテーブル
 |Column|Type|Option|
@@ -37,8 +27,8 @@
 |block|string|null: false|
 |building|text|null: false|
 |telephone_number|integer|null: false|
-- has_many :users, through: :user_adresss
-- has_many :user_adresss
+|user_id|integer|null: false|
+- has_many :users
 
 ##productテーブル
 |Column|Type|Option|
@@ -47,7 +37,7 @@
 |category|string|null: false|
 |explain|text|null: false|
 |price|integer|null: false|
-|bland|text||
+|brand|text||
 |condition|text|null: false|
 |arrive_at|date|null: false|
 |shipping_method|string|null: false|
