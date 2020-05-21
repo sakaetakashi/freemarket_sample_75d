@@ -1,0 +1,54 @@
+%header.pcHeader
+  .pcHeader__inner
+    .pcHeader__inner__main
+      %h1.pcHeader__inner__main__icon
+        = link_to image_tag("/assets/logo.png"), "#"
+      .pcHeader__inner__main__searchBox
+        = form_tag "#" do
+          = text_field_tag :keyword,'', class: "searchBox__input",placeholder: "キーワードから探す"
+          %button{type: "submit"}
+            .searchBox__icon
+              = image_tag "/assets/icon-search 1.png"
+    .pcHeader__inner__nav
+      %ul.pcHeader__inner__nav__left
+        %li.pcHeader__inner__nav__left__item.listLeft__item--first
+          = link_to "カテゴリー", "#", id: "catBtn"
+          .tree.displayNone
+            %ul.categoryTree
+              %li.categoryTree__item
+                = link_to "レディース", "#", id: "1"
+              %li.categoryTree__item
+                = link_to "メンズ", "#", id: "2"
+              %li.categoryTree__item
+                = link_to "ベビー・キッズ", "#", id: "3"
+              %li.categoryTree__item
+                = link_to "インテリア・住まい・小物", "#", id: "4"
+              %li.categoryTree__item
+                = link_to "ベビー・キッズ", "#", id: "5"
+              %li.categoryTree__item
+                = link_to "おもちゃ・ホビー・グッズ", "#", id: "6"
+              %li.categoryTree__item
+                = link_to "コスメ・香水・美容", "#", id: "7"
+              %li.categoryTree__item
+                = link_to "家電・スマホ・カメラ", "#", id: "8"
+              %li.categoryTree__item
+                = link_to "スポーツ・レジャー", "#", id: "9"
+              %li.categoryTree__item
+                = link_to "ハンドメイド", "#", id: "10"
+              %li.categoryTree__item
+                = link_to "チケット", "#", id: "11"
+              %li.categoryTree__item
+                = link_to "自動車・オートバイ", "#", id: "12"
+              %li.categoryTree__item
+                = link_to "その他", "#", id: "13"
+        %li.pcHeader__inner__nav__left__item
+          = link_to "ブランド", "#", id: "brandBtn"
+      %ul.pcHeader__inner__nav__right
+        - if user_signed_in?
+          %li.pcHeader__inner__nav__right__item
+            = link_to "ログアウト", "#"
+        - else
+          %li.pcHeader__inner__nav__right__item
+            = link_to "ログイン", "#"
+          %li.pcHeader__inner__nav__right__item
+            = link_to "新規会員登録", "#"
