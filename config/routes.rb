@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources  :addresses
   resources  :categories
   resources  :credit_cards
-  
+  resources  :homes
 
 end
