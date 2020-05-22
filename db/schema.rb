@@ -26,16 +26,19 @@ ActiveRecord::Schema.define(version: 2020_05_21_063920) do
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
