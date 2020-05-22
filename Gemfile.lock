@@ -284,7 +284,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
-  font-awesome-sass
+  font-awesome-sass (~> 5.12.0)
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
