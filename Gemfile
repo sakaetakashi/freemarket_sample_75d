@@ -75,7 +75,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
 gem 'devise'
-gem 'jquery-rails'
 gem 'jp_prefecture'
 gem 'rails-i18n'
+gem 'ancestry'
+gem 'jquery-rails'
+gem 'font-awesome-sass', '~> 5.12.0'
 
