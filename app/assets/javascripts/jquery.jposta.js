@@ -13,7 +13,7 @@
  * jquery.js
  */
 
- //= require jquery
+
  
 var Jpostal = {};
 
