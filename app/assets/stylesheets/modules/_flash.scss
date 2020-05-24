@@ -1,12 +1,13 @@
 .notification {
+  text-align: center;
   &__notice {
-    background-color: light_blue;
+    background-color: lightblue;
     color: white;
     text-align: center;
   }
 
   &__alert {
-    background-color: alert_orange;
+    background-color: orange;
     color: white;
     text-align: center;
   }
