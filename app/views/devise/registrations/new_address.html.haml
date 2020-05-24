@@ -1,0 +1,50 @@
+= render "products/exhibition-header"
+
+.registrations
+  .registrations__b
+    %h1.registrations__b__title
+    住所登録
+    %br
+    = form_for @address do |f| 
+      = render "devise/shared/error_messages", resource: @address 
+      .d_field
+        = f.label :郵便番号, class: "d_field__title" 
+        %span.need_user_info="必須"
+        %br
+        = f.number_field :post_code, autofocus: true, maxlength:7, placeholder: "半角数字" 
+      %br
+      .d_field
+        = f.label :都道府県, class: "d_field__title"
+        %span.need_user_info="必須"
+        %br
+        = f.text_field :prefecture, autofocus: true, placeholder: "全角入力" 
+      %br
+      .d_field
+        = f.label :市区町村, class: "d_field__title" 
+        %span.need_user_info="必須"
+        %br
+        = f.text_field :city, autofocus: true, placeholder: "全角入力" 
+      %br
+      .d_field
+        = f.label :番地, class: "d_field__title" 
+        %span.need_user_info="必須"
+        %br
+        = f.text_field :block, autofocus: true, placeholder: "全角入力" 
+      %br
+      .d_field
+        = f.label :建物など, class: "d_field__title" 
+        %br
+        = f.text_field :building, autofocus: true, placeholder: "全角入力" 
+      %br
+      .d_field
+        = f.label :電話番号, class: "d_field__title" 
+        %br
+        = f.telephone_field :telephone_number, autofocus: true, maxlength:11, placeholder: "半角数字 ハイフンなし" 
+      %br
+      .regi_actions
+        = f.submit "登録", class: "regi_actions__btn" 
+    %br
+    .devise__render
+      = render "devise/shared/links" 
+
+= render "products/exhibition-footer" 
