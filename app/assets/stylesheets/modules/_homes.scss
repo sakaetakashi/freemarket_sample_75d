@@ -400,7 +400,7 @@
     }
   }
   .pickupContainer {
-    padding: 80px 0 0;
+    padding: 80px 0;
     background-color: #f8f8f8;
     height: 100%;
     .head {
@@ -423,7 +423,7 @@
       }
       .productLists {
         width: 780px;
-        margin: 26px auto;
+        margin: auto;
         display: flex;
         justify-content: space-around;
         a {
@@ -471,7 +471,10 @@
                   display: flex;
                   align-items: center;
                   justify-content: space-between;
- 
+                }
+                p {
+                  font-size: 10px;
+                  text-align: left;
                 }
               }
             }
@@ -515,4 +518,26 @@
       }
     }
   }
+}
+
+//出品ボタン
+.purchaseBtn {
+  width: 120px;
+  background-color: #3CCACE;
+  text-align: center;
+  border-radius: 4%;
+  bottom: 32px;
+  right: 32px;
+  position: fixed;
+  padding: 15px;
+  &__text {
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    text-decoration: none;
+    margin-bottom: 5px;
+  }
+  &__icon {
+    width: 60%;
+  } 
 }
