@@ -1,0 +1,51 @@
+= render partial: "homes/header"
+%body.user-mein-body
+  .default-container
+    %nav.bread-crumbs
+      %ul.mypage-top-tabs
+        %li
+          %a.mypage-top-tab{:href => "#"}
+            %span{:itemprop => "title"} FURIMA
+        %li
+          %span →マイページ
+    %main.l-container.clearfix
+      .l-side
+        %nav.mypage-nav
+          %ul.mypage-nav-list
+            %li.side-bar マイページメニュー
+            %li
+              %a.mypage-nav-list-item{:href => "#"}
+                プロフィール
+            %li
+              %a.mypage-nav-list-item{:href => "#"}
+                商品を出品する
+            %li
+              %a.mypage-nav-list-item{:href => "#"}
+                商品を購入する
+            %li
+              %a.mypage-nav-list-item{:href => "#"}
+                お気に入り
+            %li
+              %a.mypage-nav-list-item{:href => "#"}
+                クレジットカード登録/変更
+            %li
+              %a.mypage-nav-list-item{:href => "#"}
+                お問い合わせ
+            %li
+              %a.mypage-nav-list-item{:href => "#"}
+                ログアウト
+      .l-content
+        %ul.mypage-top-tabs
+          %li.mypage-nav-info
+            %a.mypage-nav-list-item{:href => "#"}
+              購入した商品
+          %li.mypage-nav-info
+            %a.mypage-nav-list-item{:href => "#"}
+              コメント
+          %li.mypage-nav-info
+            %a.mypage-nav-list-item{:href => "#"}
+              質問
+          %li.mypage-nav-info
+            %a.mypage-nav-list-item{:href => "#"}
+              お知らせ
+= render partial: "homes/footer"
