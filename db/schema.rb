@@ -10,25 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_063920) do
+ActiveRecord::Schema.define(version: 2020_05_25_013625) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "post_code", null: false
-    t.string "prefecture", null: false
-    t.string "city", null: false
-    t.string "block", null: false
+    t.integer "post_code"
+    t.string "prefecture"
+    t.string "city"
+    t.string "block"
     t.text "building"
-    t.string "telephone_number"
-    t.bigint "user_id"
+    t.integer "telephone_number"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "genre"
-    t.string "subgenre"
-    t.string "detail"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
@@ -71,12 +68,6 @@ ActiveRecord::Schema.define(version: 2020_05_21_063920) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "family_name", null: false
-    t.string "first_name", null: false
-    t.string "family_name_kana", null: false
-    t.string "first_name_kana", null: false
-    t.string "nickname", null: false
-    t.date "birthday", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

@@ -312,10 +312,10 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   factory_bot_rails
-  jp_prefecture
   font-awesome-sass (~> 5.12.0)
   haml-rails
   jbuilder (~> 2.5)
+  jp_prefecture
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.4.4, < 0.6.0)

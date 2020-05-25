@@ -71,9 +71,8 @@
 ##categoryテーブル
 |Column|Type|Option|
 |------|----|------|  
-|genre|string|null: false|
-|subgenre|string|null: false|
-|detail|string|null: false|
+|name|string|null: false|
+|ancestry|string|null: false|
 - belongs_to :product
 
 
