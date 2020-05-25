@@ -4,49 +4,38 @@
     %nav.bread-crumbs
       %ul.mypage-top-tabs
         %li
-          = link_to "#", class:"mypage-top-tab" do
-            %span{:itemprop => "title"} FURIMA
+          = link_to "FURIMA", "#", class:"mypage-top-tab"
         %li
           %span →マイページ
     %main.l-container.clearfix
       .l-side
         %nav.mypage-nav
           %ul.mypage-nav-list
-            %li.side-bar マイページメニュー
+            %li.side-bar
+              = link_to "マイページメニュー", "#", class:"mypage-nav-list-item"
             %li
-              = link_to "#", class:"mypage-nav-list-item" do
-                プロフィール
+              = link_to "プロフィール", "#", class:"mypage-nav-list-item"
             %li
-              = link_to "#", class:"mypage-nav-list-item" do
-                商品を出品する
+              = link_to "商品を出品する", "#", class:"mypage-nav-list-item"
             %li
-              = link_to "#", class:"mypage-nav-list-item" do
-                商品を購入する
+              = link_to "商品を購入する", "#", class:"mypage-nav-list-item"
             %li
-              = link_to "#", class:"mypage-nav-list-item" do
-                お気に入り
+              = link_to "お気に入り", "#", class:"mypage-nav-list-item"
             %li
-              = link_to "#", class:"mypage-nav-list-item" do
-                クレジットカード登録/変更
+              = link_to "クレジットカード登録/変更", "#", class:"mypage-nav-list-item"
             %li
-              = link_to "#", class:"mypage-nav-list-item" do
-                お問い合わせ
+              = link_to "お問い合わせ", "#", class:"mypage-nav-list-item"
             %li
-              = link_to "#", class:"mypage-nav-list-item" do
-                ログアウト
+              = link_to "ログアウト", "#", class:"mypage-nav-list-item"
       .l-content
         %ul.mypage-top-tabs
           %li.mypage-nav-info
-            = link_to "#", class:"mypage-nav-list-item" do
-              購入した商品
+            = link_to "購入した商品", "#", class:"mypage-nav-list-item"
           %li.mypage-nav-info
-            = link_to "#", class:"mypage-nav-list-item" do
-              コメント
+            = link_to "コメント", "#", class:"mypage-nav-list-item"
           %li.mypage-nav-info
-            = link_to "#", class:"mypage-nav-list-item" do
-              質問
+            = link_to "質問", "#", class:"mypage-nav-list-item"
           %li.mypage-nav-info
-            = link_to "http://www.yahoo.co.jp/", class:"mypage-nav-list-item" do
-              お知らせ
+            = link_to "お知らせ", "#", class:"mypage-nav-list-item"
 = render partial: "homes/footer"
 = render partial: "homes/purchasebtn"
