@@ -4,7 +4,7 @@
     %nav.bread-crumbs
       %ul.mypage-top-tabs
         %li
-          %a.mypage-top-tab{:href => "#"}
+          = link_to "#", class:"mypage-top-tab" do
             %span{:itemprop => "title"} FURIMA
         %li
           %span →マイページ
@@ -14,39 +14,39 @@
           %ul.mypage-nav-list
             %li.side-bar マイページメニュー
             %li
-              %a.mypage-nav-list-item{:href => "#"}
+              = link_to "#", class:"mypage-nav-list-item" do
                 プロフィール
             %li
-              %a.mypage-nav-list-item{:href => "#"}
+              = link_to "#", class:"mypage-nav-list-item" do
                 商品を出品する
             %li
-              %a.mypage-nav-list-item{:href => "#"}
+              = link_to "#", class:"mypage-nav-list-item" do
                 商品を購入する
             %li
-              %a.mypage-nav-list-item{:href => "#"}
+              = link_to "#", class:"mypage-nav-list-item" do
                 お気に入り
             %li
-              %a.mypage-nav-list-item{:href => "#"}
+              = link_to "#", class:"mypage-nav-list-item" do
                 クレジットカード登録/変更
             %li
-              %a.mypage-nav-list-item{:href => "#"}
+              = link_to "#", class:"mypage-nav-list-item" do
                 お問い合わせ
             %li
-              %a.mypage-nav-list-item{:href => "#"}
+              = link_to "#", class:"mypage-nav-list-item" do
                 ログアウト
       .l-content
         %ul.mypage-top-tabs
           %li.mypage-nav-info
-            %a.mypage-nav-list-item{:href => "#"}
+            = link_to "#", class:"mypage-nav-list-item" do
               購入した商品
           %li.mypage-nav-info
-            %a.mypage-nav-list-item{:href => "#"}
+            = link_to "#", class:"mypage-nav-list-item" do
               コメント
           %li.mypage-nav-info
-            %a.mypage-nav-list-item{:href => "#"}
+            = link_to "#", class:"mypage-nav-list-item" do
               質問
           %li.mypage-nav-info
-            %a.mypage-nav-list-item{:href => "#"}
+            = link_to "http://www.yahoo.co.jp/", class:"mypage-nav-list-item" do
               お知らせ
 = render partial: "homes/footer"
 = render partial: "homes/purchasebtn"
