@@ -14,7 +14,7 @@
 |password|text|null: false|
 |birthday|date|null: false|
 - has_many :products, dependent: :destroy
-- has_many :credits, dependent: :destroy
+- has_one :credit_cards, dependent: :destroy
 - has_many :adresses, dependent: :destroy
 
 ##addressテーブル
@@ -38,7 +38,7 @@
 |price|integer|null: false|
 |brand|string||
 |condition|text|null: false|
-|arrive_at|date|null: false|
+|shipping|text|null: false|
 |shipping_method|string|null: false|
 |shipping_fee|integer|null: false|
 |region|string|null: false|
@@ -59,21 +59,18 @@
 ##credit_cardテーブル
 |Column|Type|Option|
 |------|----|------|  
-|card_owner|string|null: false|
-|card_number|integer|null: false|
-|limit_month|date|null: false|
-|limit_year|date|null: false|
-|security_code|integer|null: false|
-|company|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
-- belongs_to :user
+|user_id|integer|null: false|
+|customer_id|integer|null: false|
+|caed_id|integer|null: false|
+belongs_to :user
+
 
 ##categoryテーブル
 |Column|Type|Option|
 |------|----|------|  
-|genre|string|null: false|
-|subgenre|string|null: false|
-|detail|string|null: false|
+|name|string|null: false|
+|ancestry|string|null: false|
 - belongs_to :product
+- has_many :ancestry
 
 
