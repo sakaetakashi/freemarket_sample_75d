@@ -1,7 +1,9 @@
 = render partial:"exhibition-header"
 
--# = form_tag(action: :pay, method: :post) do
--#   %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_95d4f952d3f62c2f90c0ff58"}
+= form_tag(action: :pay, controller: :credit_cards, method: :post) do
+  %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "Rails.application.credentials.dig(:payjp_public_key)"}
+-# = form_with(url: pay_credit_cards_path) do
+-#   %script.payjp-button{src: "https://checkout.pay.jp", type: "text/javascript", "data-text"=> "購入する", class: "payjp-button", "data-key"="pk_test_95d4f952d3f62c2f90c0ff58"}
 
 = link_to "ログイン", new_user_session_path
 = link_to "新規会員登録", new_user_registration_path
