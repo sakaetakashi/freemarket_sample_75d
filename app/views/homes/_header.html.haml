@@ -2,13 +2,14 @@
   .pcHeader__inner
     .pcHeader__inner__main
       %h1.pcHeader__inner__main__icon
-        = link_to image_tag("/assets/logo.png"), "#"
+        = link_to "#" do
+          = image_tag asset_path("logo.png")
       .pcHeader__inner__main__searchBox
         = form_tag "#" do
           = text_field_tag :keyword,'', class: "searchBox__input",placeholder: "キーワードから探す"
           %button{type: "submit"}
             .searchBox__icon
-              = image_tag "/assets/icon-search 1.png"
+              = image_tag asset_path("icon-search 1.png")
     .pcHeader__inner__nav
       %ul.pcHeader__inner__nav__left
         %li.pcHeader__inner__nav__left__item.listLeft__item--first

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources  :images
   resources  :addresses
   resources  :credit_cards
-
+  resources  :users, only: [:edit, :update]
   resources  :homes
 
 end
