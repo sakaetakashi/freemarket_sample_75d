@@ -1,78 +1,54 @@
 class CreditCardsController < ApplicationController
 
-  require 'payjp'
-  before_action :set_card
-
-
-  def index
-
-  end
+  require "payjp"
 
   def new
-    card = Credit_card.where(user_id: current_user.id)
-    if card.present?
-      redirect_to action: "show"
-    end 
+    card = CreditCard.where(user_id: current_user.id)
+    redirect_to action: "show" if card.exists?
   end
 
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def show
-  end
-
-  def destroy
-  end
-  
-
-  def pay
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+  def pay #payjpとCardのデータベース作成を実施します。
+    Payjp.api_key = 'sk_test_27a0dd7f6bc780e02725df8d'
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
-      customer = Payjp::Custommer.create(
-        description: 'test', 
-        email: current_user.email,
-        card: params['payjp-token'],
-        metadata: {user_id: current_user.id}
-        )
-      @card = Credit_card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      customer = Payjp::Customer.create(
+      description: '登録テスト', #なくてもOK
+      email: current_user.email, #なくてもOK
+      card: params['payjp-token'],
+      metadata: {user_id: current_user.id}
+      ) #念の為metadataにuser_idを入れましたがなくてもOK
+      @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to action: "index"
+        redirect_to action: "show"
       else
-        redirect_to action: "create"
+        redirect_to action: "pay"
       end
     end
   end
 
-  def purchase
-#クレジットカードと製品の変数を設定
-    @creditcard = Creditcard.where(user_id: current_user.id).first
-    @product = Product.find(params[:id])
-  #Payjpの秘密鍵を取得
-    Payjp.api_key= '秘密鍵'
-  #payjp経由で支払いを実行
-    charge = Payjp::Charge.create(
-      amount: @product.price,
-      customer: Payjp::Customer.retrieve(@creditcard.customer_id),
-      currency: 'jpy'
-    )
-#製品のbuyer_idを付与
-    @product_buyer= Product.find(params[:id])
-    @product_buyer.update( buyer_id: current_user.id)
-    redirect_to purchased_product_path
-  end
- 
-
-  private
-  def set_card
-    @card = Credit_card.where(user_id: current_user.id).first if Credit_card.where(user_id: current_user.id).present?
+  def delete #PayjpとCardデータベースを削除します
+    card = CreditCard.where(user_id: current_user.id).first
+    if card.blank?
+    else
+      Payjp.api_key = 'sk_test_27a0dd7f6bc780e02725df8d'
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer.delete
+      card.delete
+    end
+      redirect_to action: "new"
   end
 
+  def show #Cardのデータpayjpに送り情報を取り出します
+    card = CreditCard.where(user_id: current_user.id).first
+    if card.blank?
+      redirect_to action: "new" 
+    else
+      Payjp.api_key = 'sk_test_27a0dd7f6bc780e02725df8d'
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+    end
+  end
 end
+  
+  
