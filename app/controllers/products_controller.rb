@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
+    @products = Product.all.order("created_at DESC").limit(3)
   end
 
   def new
@@ -16,9 +17,11 @@ class ProductsController < ApplicationController
   end
 
   def show
+
   end
 
   def destroy
   end
   
 end
+
