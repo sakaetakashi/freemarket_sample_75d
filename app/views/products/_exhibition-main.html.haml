@@ -1,6 +1,6 @@
 .exhibition-main
   %section.main-block
-    =form_with model:@product, local:true do |f|
+    =form_for @product do |f|
       .exhibition-form
         .form-upload
           %p.title
@@ -13,27 +13,18 @@
                 %i.fas.fa-camera
             .hidden-content
               = f.fields_for :images do |i|
-                = i.file_field :image, class: "hidden-field"
-                %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image" }
-                %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
-                %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
-                %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_4_image" }
-                %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_5_image" }
-                %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_6_image" }
-                %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_7_image" }
-                %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_8_image" }
-                %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_9_image" }
+                = i.file_field :src, class: "hidden-field"
         .form-name-explain
           .form-name
             %p.title
               商品名
               %span.require 必須
-          = f.text_field :name, placeholder:"商品名（必須 40文字まで)",class: "form-group-name",style: "font-size:14px;"
+          = f.text_field :product_name, placeholder:"商品名（必須 40文字まで)",class: "form-group-name",style: "font-size:14px;"
           .form-explain
             %label
               商品の説明
               %span.require 必須
-              =f.text_area :name, placeholder:"商品の説明（必須 1000文字以内）",class: "form-group-explain"
+              =f.text_area :explain, placeholder:"商品の説明（必須 1000文字以内）",class: "form-group-explain"
         .form-detail
           %p.title 商品の詳細
           .detail-category
@@ -42,21 +33,21 @@
                 カテゴリー
                 %span.require 必須
             .category-form
-              =f.select :category,["選択してください"],{},{class:"category-menu"}
+              =f.select :category, @category_parent_array, {}, {class:"category-menu", id: 'parent_category'}
           .detail-brand
             .brand-field
               %label
                 ブランド
                 %span.optional 任意
             .brand-form
-              = f.text_field :name, placeholder:"例）シャネル",class: "brand-name"
+              = f.text_field :brand, placeholder:"例）シャネル",class: "brand-name"
           .detail-condition
             .condition-field
               %label
                 商品の状態
                 %span.require 必須
             .condition-form
-              =f.select :condition,["選択してください"],{},{class:"condition-menu"}
+              =f.text_field :condition, class:"condition-menu"
         .form-delivery
           %p.title 配送について
           .delivery-responsibility
@@ -65,21 +56,21 @@
                 配送料の負担
                 %span.require 必須
             .responsibility-form
-              =f.select :responsibility,["選択してください"],{},{class:"responsibility-menu"}
+              =f.number_field :shipping_fee, class:"responsibility-menu"
           .delivery-region
             .region-field
               %label
                 発送元の地域
                 %span.require 必須
             .region-form
-              =f.select :region,["選択してください"],{},{class:"region-menu"}
+              =f.text_field :region, class:"region-menu"
           .until-shipping
             .shipping-field
               %label
                 発送までの日数
                 %span.require 必須
             .shipping-form
-              =f.select :shipping,["選択してください"],{},{class:"shipping-menu"}
+              =f.number_field :arrive_at, class:"shipping-menu"
         .exhibition-price
           %p.title 価格
           .selling-price
@@ -89,7 +80,7 @@
                 %span.require 必須
             .price-form
               %span ¥
-              %input{class:"price-area",type:"number",placeholder:"0",style:"text-align:right"}
+              = f.number_field :price
               %span 円
 
         .form-btn

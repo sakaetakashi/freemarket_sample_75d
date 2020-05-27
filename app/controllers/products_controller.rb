@@ -4,9 +4,17 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
+    @product.images.new
   end
 
   def create
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -24,6 +32,12 @@ class ProductsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+def product_params
+  params.require(:product).permit(:product_name, :explain, :price, :brand, :condition, :arrive_at, :shipping_fee, :region, images_attributes: [:src]).merge(user_id: current_user.id)
+end
   
   require 'payjp'
 

@@ -7,13 +7,19 @@ Rails.application.routes.draw do
   end
 
   root 'products#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources  :products do
     member do
       get 'purchase/:id', to: 'products#purchase'
     end
   end
-  
+
+  resources :products do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
+
   resources  :categories
   resources  :images
   resources  :addresses
