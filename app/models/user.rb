@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :birthday, presence: true
 
   has_many :products, dependent: :destroy
-  has_many :credits, dependent: :destroy
+  has_one :credit_cards, dependent: :destroy
   has_one :address, dependent: :destroy
 
   devise :validatable, password_length: 7..128
