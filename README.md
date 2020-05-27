@@ -1,8 +1,8 @@
 # README
 
-#freemarket_sample_75d DB設計図
+# freemarket_sample_75d DB設計図
 
-##userテーブル
+## userテーブル
 |Column|Type|Option|
 |------|----|------|
 |family_name|string|null: false|
@@ -14,10 +14,10 @@
 |password|text|null: false|
 |birthday|date|null: false|
 - has_many :products, dependent: :destroy
-- has_many :credits, dependent: :destroy
+- has_one :credit_cards, dependent: :destroy
 - has_many :adresses, dependent: :destroy
 
-##addressテーブル
+## addressテーブル
 |Column|Type|Option|
 |------|----|------|
 |post_code|integer|null: false|
@@ -29,7 +29,7 @@
 |user_id|integer|null: false|
 - belongs_to :user
 
-##productテーブル
+## productテーブル
 |Column|Type|Option|
 |------|----|------|
 |product_name|text|null: false|
@@ -38,42 +38,42 @@
 |price|integer|null: false|
 |brand|string||
 |condition|text|null: false|
-|arrive_at|date|null: false|
+|shipping_date|text|null: false|
 |shipping_method|string|null: false|
 |shipping_fee|integer|null: false|
 |region|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
+|seller_id|reference|null: false, foreign_key: true|
+|buyer_id|reference|foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
 - belongs_to :user
 - has_many :images, dependent: :destroy
 - has_many :categories, dependent: :destroy
+- belongs_to :seller, class_name: "User"
+- belongs_to :buyer, class_name: "User"
 
 
-##imageテーブル
+## imageテーブル
 |Column|Type|Option|
 |------|----|------|
 |image|text|null: false|
 |product_id|integer|null: false, foreign_key: true|
 - belongs_to :product
 
-##credit_cardテーブル
+## credit_cardテーブル
 |Column|Type|Option|
 |------|----|------|  
-|card_owner|string|null: false|
-|card_number|integer|null: false|
-|limit_month|date|null: false|
-|limit_year|date|null: false|
-|security_code|integer|null: false|
-|company|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
-- belongs_to :user
+|user_id|integer|null: false|
+|customer_id|integer|null: false|
+|caed_id|integer|null: false|
+belongs_to :user
 
-##categoryテーブル
+
+## categoryテーブル
 |Column|Type|Option|
 |------|----|------|  
-|genre|string|null: false|
-|subgenre|string|null: false|
-|detail|string|null: false|
+|name|string|null: false|
+|ancestry|string|null: false|
 - belongs_to :product
+- has_many :ancestry
 
 

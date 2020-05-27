@@ -205,7 +205,7 @@
   background: #f8f8f8;
   .mainVisual {
     height: 560px;
-    background-image: url("/assets/bg-mainVisual-pict_pc.jpg");
+    background-image: image-url("bg-mainVisual-pict_pc.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
@@ -307,7 +307,7 @@
     }
   }
   .topMiddleDl {
-    background-image: url("/assets/bg-topMiddleDl-pict.jpg");
+    background-image: imageurl("bg-topMiddleDl-pict.jpg");
     background-position: bottom right;
     height: 400px;
     background-size: cover;
@@ -400,7 +400,7 @@
     }
   }
   .pickupContainer {
-    padding: 80px 0 0;
+    padding: 80px 0;
     background-color: #f8f8f8;
     height: 100%;
     .head {
@@ -423,7 +423,7 @@
       }
       .productLists {
         width: 780px;
-        margin: 26px auto;
+        margin: auto;
         display: flex;
         justify-content: space-around;
         a {
@@ -471,7 +471,10 @@
                   display: flex;
                   align-items: center;
                   justify-content: space-between;
- 
+                }
+                p {
+                  font-size: 10px;
+                  text-align: left;
                 }
               }
             }
@@ -483,7 +486,7 @@
 }
 //バーナー
 .appBanner {
-  background-image: url("/assets/bg-appBanner-pict.jpg");
+  background-image: image-url("bg-appBanner-pict.jpg");
   padding: 100px 40px;
   position: relative;
   background-size: cover;
@@ -515,4 +518,26 @@
       }
     }
   }
+}
+
+//出品ボタン
+.purchaseBtn {
+  width: 120px;
+  background-color: #3CCACE;
+  text-align: center;
+  border-radius: 4%;
+  bottom: 32px;
+  right: 32px;
+  position: fixed;
+  padding: 15px;
+  &__text {
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    text-decoration: none;
+    margin-bottom: 5px;
+  }
+  &__icon {
+    width: 60%;
+  } 
 }
