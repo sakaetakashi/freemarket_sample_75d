@@ -1,21 +1,66 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+= render "products/exhibition-header"
+
+.registrations
+  .registrations__b
+    %h1.registrations__b__title
+      新規登録
+    %br
+    = form_for(@user, url: user_registration_path) do |f| 
+      = render "devise/shared/error_messages", resource: @user 
+      .d_field
+        = f.label :ニックネーム, class: 'd_field__title' 
+        %span.need_user_info="必須"
+        %br 
+        = f.text_field :nickname, autofocus: true, class: "d_field__box" 
+      %br
+      .d_field
+        = f.label :メールアドレス, class: "d_field__title" 
+        %span.need_user_info="必須"
+        %br
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "d_field__box" 
+      %br
+      .d_field
+        = f.label :パスワード, class: "d_field__title" 
+        %span.need_user_info="必須"
+        - if @minimum_password_length
+          %em
+            (#{@minimum_password_length} 文字以上)
+          %br
+        = f.password_field :password, autocomplete: "new-password", class: "d_field__box" 
+      %br
+      .d_field
+        = f.label :パスワード確認, class: "d_field__title"
+        %span.need_user_info="必須"
+        %br
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: "d_field__box" 
+      %br
+      .d_field_name
+        = f.label :"お名前(全角)", class: "d_field__title" 
+        %span.need_user_info="必須"
+        %br
+        .d_field_name__a
+          = f.text_field :family_name, autofocus: true, placeholder: "名字", class: "d_field_name__a__inp" 
+        .d_field_name__b
+          = f.text_field :first_name, autofocus: true, placeholder: "名前", class: "d_field_name__b__inp" 
+
+      .d_field_name2
+        = f.label :"ふりがな・お名前(全角)", class: "d_field__title"  
+        %span.need_user_info="必須"
+        %br
+        .d_field_name2__a
+          = f.text_field :family_name_kana, autofocus: true, placeholder: "名字", class: "d_field_name2__a__inp" 
+        .d_field_name2__b
+          = f.text_field :first_name_kana, autofocus: true, placeholder: "名前", class: "d_field_name2__b__inp" 
+
+      .d_field
+        = f.label :生年月日, class: "d_field__title" 
+        %span.need_user_info="必須"
+        %br
+        = f.date_field :birthday, autofocus: true, maxlength: '8', class: "d_field__box" 
+      %br
+      .regi_actions
+        = f.submit "次へ進む", class: "regi_actions__btn" 
+    .devise__render
+      = render "devise/shared/links" 
+
+= render "products/exhibition-footer" 

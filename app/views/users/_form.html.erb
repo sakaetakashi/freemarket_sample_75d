@@ -1,0 +1,10 @@
+<%= simple_form_for @user do |f| %>
+ 
+  <%= f.input :postcode %>
+  <%= f.input :prefecture, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' %>
+  <%= f.input :city %>
+  <%= f.input :block %>
+  <%= f.input :building %>
+  <%= f.button :submit %>
+  
+<% end %>
