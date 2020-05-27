@@ -1,4 +1,4 @@
-= render partial: "homes/header"
+= render partial: "header"
 .productmain 
   .showMain
     .contentRight
@@ -36,11 +36,11 @@
                 %tr
                   %th カテゴリー
                   %td
-                    = link_to "ベビーキッズ","#" 
+                    = link_to @parent.name,"#" 
                     %br/
-                    = link_to "ベビー服（男女兼用) ~95cm" ,"#"
+                    = link_to  @child.name,"#"
                     %br/
-                    = link_to "アウター" ,"#"
+                    = link_to @grandchild.name ,"#"
                 %tr
                   %th ブランド
                   %td
@@ -92,5 +92,5 @@
             = icon('fa', 'angle-right')
       .relatedItems
         = link_to "ベビー・キッズをもっと見る", "#"
-= render partial: "homes/appbanner"
-= render partial: "homes/footer"
+= render partial: "appbanner"
+= render partial: "footer"

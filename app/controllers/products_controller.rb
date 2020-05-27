@@ -16,9 +16,10 @@ class ProductsController < ApplicationController
   end
 
   def show
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-    @credit_card = Payjp::Token.retrieve("@credit_card.customer_id")
-    
+    @product = Product.find(params[:id])
+    @grandchild = @product.category
+    @child = @grandchild.parent
+    @parent = @child.parent
   end
 
   def destroy
