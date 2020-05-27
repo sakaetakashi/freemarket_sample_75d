@@ -312,3 +312,191 @@ input{
     }
   }
 }
+
+.productmain {
+  background-color: #f8f8f8;
+  .showMain {
+    padding: 40px;
+    margin: 0 auto;
+    .contentRight {
+      width: 700px;
+      margin: 0 auto;
+      .topContent {
+        .itemBox {
+          background-color: #fff;
+          padding: 24px 40px 40px;
+          &__name {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+          }
+          &__body {
+            margin: 16px 0 0;
+            ul {
+              display: flex;
+              position: relative;
+              > li {
+                display: flex;
+                flex-direction: column;
+                width: 560px;
+                align-items: center;
+                margin: 0 auto;
+                img {
+                  object-fit: cover;
+                  height: 346px;
+                  width: 100%;
+                  vertical-align: bottom;
+                }
+                ul {
+                  display: flex;
+                  justify-content: center;
+                  margin-top: 10px;
+                  li {
+                    width: 25%;
+                    margin: 0 10px 0 0;
+                    img {
+                      object-fit: cover;
+                      height: 87px;
+                      vertical-align: bottom;
+                      width: 100%;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          &__price {
+            margin: 24px 0 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            > span {
+              font-size: 46px;
+              font-weight: bold;
+              margin: 0 10px 0 0;
+            }
+            .itemBox__price-detail {
+              font-size: 16px;
+            }
+          }
+          .itemDetail {
+            line-height: 1.5;
+            font-size: 18px;
+            margin-bottom: 30px;
+          }
+          .table {
+            margin-bottom: 20px;
+            table {
+              width: 100%;
+              height: 375px;
+              border-collapse: collapse;
+              border: 1px solid #f8f8f8;
+              tbody {
+                tr {
+                  th {
+                    width: 20%;
+                    background-color: #eee;
+                    font-weight: 400;
+                    padding: 8px;
+                    border: 1px solid #dedede;
+                    font-size: 14px;
+                    text-align: center;
+                  }
+                  td {
+                    width: 61%;
+                    padding: 15px;
+                    border: 1px solid #dedede;
+                    font-size: 14px;
+                    >a {
+                      text-decoration: none;
+                      color: #3CCACE;
+                    }                    
+                  }
+                }
+              }
+            }
+          }
+          .optionalArea {
+            display: flex;
+            justify-content: space-between;
+            ul {
+              margin: 10px 0 0;
+              display: flex;
+              .likeBtn {
+                margin-right: auto;
+                padding: 6px 10px;
+                border-radius: 40px;
+                color: #3CCACE;
+                border: 1px solid #ffb340;
+              }
+            }
+            .optional {
+              .optionalBtn {
+                a {
+                  padding: 6px 10px;
+                  display: inline-block;
+                  border-radius: 4px;
+                  color: #333;
+                  border: 1px solid #333;
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+        }
+        .commentBox {
+          padding: 24px;
+          background-color: #fff;
+          margin: 10px 0;
+          text-align: center;
+          form {
+            display: block;
+            textarea {
+              width: 100%;
+              min-height: 104px;
+            }
+            .noticeMsg {
+              padding: 8px;
+              font-size: 14px;
+              background-color: #f8f8f8;
+              margin: 10px 0;
+              text-align: left;
+            }
+            button {
+              line-height: 48px;
+              background-color: #3CCACE;
+              border: 1px solid #3CCACE;
+              color: #fff;
+              width: 60%;
+              font-size: 18px;
+              border-radius: 100px;
+            }
+          }
+        }
+      }
+      .links {
+        li {
+          float: left;
+          a {
+            text-decoration: none;
+            color: #3CCACE;
+          }
+        }
+        li:last-child {
+          float: right;
+        }
+      }
+      .relatedItems {
+        a {
+          display: block;
+          margin: 40px 0 8px;
+          color: #3CCACE;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 22px;
+          position: relative;
+        }
+      }
+    }
+  }
+}
