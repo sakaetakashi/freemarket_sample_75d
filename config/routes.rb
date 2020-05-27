@@ -6,13 +6,12 @@ Rails.application.routes.draw do
   end
   root 'products#index'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources  :products
   resources  :categories
   resources  :images
   resources  :addresses
   resources  :credit_cards
+  resources  :users, only: [:edit, :update]
 
-  resources  :homes
 
 end

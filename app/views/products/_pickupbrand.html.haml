@@ -5,12 +5,12 @@
     .productHead
       = link_to "#" do
         %h3.title
-          新規投稿商品
+          アーカイブ
     .productLists
       .productList
         = link_to "#" do
           %figure.productList--img
-            = image_tag "/assets/chelsea.png"
+            = image_tag asset_path("chelsea.png")
           .productList--body
             %h3.name
               product3
@@ -26,7 +26,7 @@
       .productList
         = link_to "#" do
           %figure.productList--img
-            = image_tag "/assets/manu.png"
+            = image_tag asset_path("manu.png")
           .productList--body
             %h3.name
               product2
@@ -42,7 +42,7 @@
       .productList
         = link_to "#" do
           %figure.productList--img
-            = image_tag "/assets/liverpool.png"
+            = image_tag asset_path("liverpool.png")
           .productList--body
             %h3.name
               product1
@@ -56,3 +56,4 @@
               %p
                 (税込み)
      
+
