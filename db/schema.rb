@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_05_25_013625) do
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
@@ -33,30 +33,21 @@ ActiveRecord::Schema.define(version: 2020_05_25_013625) do
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-
-    t.string "card_owner"
-    t.integer "card_number"
-    t.date "limit_month"
-    t.date "limit_year"
-    t.integer "security_code"
-    t.string "company"
-    t.integer "user_id"
-
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-
     t.text "image"
     t.integer "product_id"
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-
     t.text "product_name"
     t.text "explain"
     t.integer "price"
@@ -68,7 +59,6 @@ ActiveRecord::Schema.define(version: 2020_05_25_013625) do
     t.string "region"
     t.integer "category_id"
     t.integer "user_id"
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

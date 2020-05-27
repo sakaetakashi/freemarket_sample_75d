@@ -80,4 +80,4 @@ gem 'rails-i18n'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.12.0'
 gem 'ancestry'
-
+gem 'payjp'

@@ -1,0 +1,44 @@
+= render partial:"exhibition-header"
+
+.purchase
+  .purchase__main
+    %h1.purchase__main__title
+      購入内容の確認
+    .purchase__main__item
+      .purchase__main_item__image
+        =image_tag src="/assets/chelsea.png", size: "150x150"
+      %ul.purchase__main__item__ul
+        %li.purchase__main__item__ul__name
+          チェルシー・ロゴ
+        %li.purchase__main__item__ul__price
+          ¥4,000
+        %li.purchase__main__item__ul__komi
+          (税込み＋送料込み)
+    .purchase__main__value
+      %ul.purchase__main__value__ul
+        %li 支払い金額
+        %li ¥(4,000)
+    .purchase__main__credit_card
+      %p クレジットカード登録
+      = form_tag(action: :pay, controller: :credit_cards, method: :post) do
+        %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "登録する" ,"data-key" => Rails.application.credentials.dig(:payjp_public_key)}
+      -# = form_with(url: pay_credit_cards_path) do
+      -#   %script.payjp-button{src: "https://checkout.pay.jp", type: "text/javascript", "data-text"=> "購入する", class: "payjp-button", "data-key"="pk_test_95d4f952d3f62c2f90c0ff58"}
+   
+    .purchase__main__attention
+      %p 郵便
+    .purchase__main__decsion
+      = form_tag(action: :pay, controller: :credit_cards, method: :post ) do
+        %button.purchase__main__decsion__btn 購入する
+        
+    .purchase__main__move
+      = link_to "ログイン", new_user_session_path, class: :purchase__main__move__a
+      = link_to "新規登録", new_user_registration_path, class: :purchase__main__move__a
+      = link_to "カード登録", "credit_cards/new", class: :purchase__main__move__a
+
+= render partial:"exhibition-footer"
+
+
+
+
+
