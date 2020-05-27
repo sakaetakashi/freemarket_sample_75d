@@ -13,13 +13,13 @@ Rails.application.routes.draw do
       get 'purchase/:id', to: 'products#purchase'
     end
   end
-      
+  
   resources  :categories
   resources  :images
   resources  :addresses
   
   resources  :users, only: [:edit, :update]
-  resources  :homes
+
 
   resources  :credit_cards, only: [:new, :show] do
     collection do
