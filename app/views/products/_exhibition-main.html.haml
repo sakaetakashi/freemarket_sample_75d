@@ -7,13 +7,10 @@
             出品画像
             %span.require 必須
           %p 最大10枚までアップロードできます
-          .drop-box
-            .prev-content
-              %label{for: "item_images_attributes_0_image", class: "camera-icon", id: "label-box--0"}
-                %i.fas.fa-camera
-            .hidden-content
-              = f.fields_for :images do |i|
-                = i.file_field :src, class: "hidden-field"
+          %div#image-box
+            = f.fields_for :images do |i|
+              .js-file_group{data: {index: '#{ image.index }' }}
+                = i.file_field :src, class: "js-file"
         .form-name-explain
           .form-name
             %p.title
