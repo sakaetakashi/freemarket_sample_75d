@@ -22,12 +22,7 @@
       %p クレジットカード登録/情報
       - if @default_card_information.blank?
         = link_to "カード登録", "credit_cards/new", class: :purchase__main__move__a
-        -# = form_tag(action: :credit_card_blank, controller: :products, method: :post) do
-        -#   %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "登録する" ,"data-key" => "Rails.application.credentials.dig(:payjp_public_key)"}
-        -#  = form_with(url: pay_credit_cards_path) do
-        -#   %script.payjp-button{src: "https://checkout.pay.jp", type: "text/javascript", "data-text"=> "購入する", class: "payjp-button", "data-key"="pk_test_95d4f952d3f62c2f90c0ff58"}
       - else
-        -#以下カード情報を表示
         = "**** **** **** " + @default_card_information.last4
         - exp_month = @default_card_information.exp_month.to_s
         - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
@@ -36,13 +31,13 @@
     .purchase__main__attention
       %p 郵便
     .purchase__main__decsion
-      = form_tag(action: :pay, controller: :credit_cards, method: :post ) do
+      = form_tag(action: :pay, method: :post ) do
         %button.purchase__main__decsion__btn 購入する
         
     .purchase__main__move
       = link_to "ログイン", new_user_session_path, class: :purchase__main__move__a
       = link_to "新規登録", new_user_registration_path, class: :purchase__main__move__a
-      = link_to "カード登録", "credit_cards/new", class: :purchase__main__move__a
+      = link_to "カード削除", "credit_cards/show", class: :purchase__main__move__a
 
 = render partial:"exhibition-footer"
 

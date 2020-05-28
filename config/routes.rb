@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   root 'products#purchase'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources  :products do
-    member do
-      get 'purchase/:id', to: 'products#purchase'
-      post 'credit_card_blank', to: 'products#credit_card_blank'
+    collection do
+      get 'purchase', to: 'products#purchase'
+      post 'pay', to: 'products#pay'
+      get 'done', to: 'products#done'
     end
   end
   
