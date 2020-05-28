@@ -1,84 +1,97 @@
 .exhibition-main
-  %section.main-block
+  .exhibition-main__inner
     =form_for @product do |f|
-      .exhibition-form
-        .form-upload
-          %p.title
-            出品画像
-            %span.require 必須
+      .form-image
+        .form-image__inner
+          .nav
+            %h1.title
+              出品画像
+            %label.require 必須
           %p 最大10枚までアップロードできます
           %div#image-box
-            = f.fields_for :images do |i|
+            %div#previews
+              - if @product.persisted?
+                = @product.images.each_with_index do |image, i|
+                  = image_tag image.src.url, data: { index: 1 },width: "100", height: "100"
+            = f.fields_for :images do |image|
               .js-file_group{data: {index: '#{ image.index }' }}
-                = i.file_field :src, class: "js-file"
-        .form-name-explain
-          .form-name
-            %p.title
-              商品名
-              %span.require 必須
-          = f.text_field :product_name, placeholder:"商品名（必須 40文字まで)",class: "form-group-name",style: "font-size:14px;"
-          .form-explain
+                = image.file_field :src, class: "js-file"
+                %span.js-remove
+                  削除
+              - if @product.persisted?
+                = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy' 
+            - if @product.persisted?
+              .js-file_group{data: {index: '#{ image.index.count }' }}
+                = file_field_tag :src, name: "product[image_attributes][#{@product.images.count}][src]", class: "js-file"
+                %span.js-remove
+                  削除
+      .form-name-explain
+        .form-name
+          %p.title
+            商品名
+            %span.require 必須
+        = f.text_field :product_name, placeholder:"商品名（必須 40文字まで)",class: "form-group-name",style: "font-size:14px;"
+        .form-explain
+          %label
+            商品の説明
+            %span.require 必須
+            =f.text_area :explain, placeholder:"商品の説明（必須 1000文字以内）",class: "form-group-explain"
+      .form-detail
+        %p.title 商品の詳細
+        .listing-form-box
+          .listing-product-detail__category
+            = f.label 'カテゴリー', class: 'listing-default__label'
+            %span.listing-default--require 必須
+            .listing-select-wrapper
+              .listing-select-wrapper__box
+                = f.collection_select :category_id, Category.roots, :id, :name , {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+        .detail-brand
+          .brand-field
             %label
-              商品の説明
+              ブランド
+              %span.optional 任意
+          .brand-form
+            = f.text_field :brand, placeholder:"例）シャネル",class: "brand-name"
+        .detail-condition
+          .condition-field
+            %label
+              商品の状態
               %span.require 必須
-              =f.text_area :explain, placeholder:"商品の説明（必須 1000文字以内）",class: "form-group-explain"
-        .form-detail
-          %p.title 商品の詳細
-          .listing-form-box
-            .listing-product-detail__category
-              = f.label 'カテゴリー', class: 'listing-default__label'
-              %span.listing-default--require 必須
-              .listing-select-wrapper
-                .listing-select-wrapper__box
-                  = f.collection_select :category_id, Category.roots, :id, :name , {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-          .detail-brand
-            .brand-field
-              %label
-                ブランド
-                %span.optional 任意
-            .brand-form
-              = f.text_field :brand, placeholder:"例）シャネル",class: "brand-name"
-          .detail-condition
-            .condition-field
-              %label
-                商品の状態
-                %span.require 必須
-            .condition-form
-              =f.text_field :condition, class:"condition-menu"
-        .form-delivery
-          %p.title 配送について
-          .delivery-responsibility
-            .delivery-field
-              %label
-                配送料の負担
-                %span.require 必須
-            .responsibility-form
-              =f.number_field :shipping_fee, class:"responsibility-menu"
-          .delivery-region
-            .region-field
-              %label
-                発送元の地域
-                %span.require 必須
-            .region-form
-              =f.text_field :region, class:"region-menu"
-          .until-shipping
-            .shipping-field
-              %label
-                発送までの日数
-                %span.require 必須
-            .shipping-form
-              =f.number_field :arrive_at, class:"shipping-menu"
-        .exhibition-price
-          %p.title 価格
-          .selling-price
-            .price-field
-              %label
-                販売価格
-                %span.require 必須
-            .price-form
-              %span ¥
-              = f.number_field :price
-              %span 円
-
-        .form-btn
-          = f.submit "出品する",class: "btn-red"
+          .condition-form
+            =f.select :condition, [["傷あり", "傷あり"], ["目立たない傷あり", "目立たない傷あり"], ["傷なし", "傷なし"], ["未開封・新品","未開封・新品"]]
+      .form-delivery
+        %p.title 配送について
+        .delivery-responsibility
+          .delivery-field
+            %label
+              配送料の負担
+              %span.require 必須
+          .responsibility-form
+            =f.select :shipping_fee, [["購入者負担(着払い)", "購入者負担(着払い)"], ["出品者負担(元払い)", "出品者負担(元払い)"]]
+        .delivery-region
+          .region-field
+            %label
+              発送元の地域
+              %span.require 必須
+          .region-form
+            =f.collection_select :region_id, Region.all, :id, :name
+        .until-shipping
+          .shipping-field
+            %label
+              発送までの日数
+              %span.require 必須
+          .shipping-form
+            =f.select :arrive_at, [["1〜２日で発送", "1〜２日で発送"], ["2〜3日で発送", "2〜3日で発送"], ["3〜4日で発送", "3〜4日で発送"]]
+      .exhibition-price
+        %p.title 価格
+        .selling-price
+          .price-field
+            %label
+              販売価格
+              %span.require 必須
+          .price-form
+            %span ¥
+            = f.number_field :price
+            %span 円
+      .form-btn
+        = f.submit "出品する",class: "btn-red"

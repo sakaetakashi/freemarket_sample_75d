@@ -1,4 +1,4 @@
-.exhibition-header
-  %h1
-    /= link_to "パス", class: "header-btn" do
-    = image_tag asset_path("logo.png"), alt: "furima", class: "header-btn"
+%header.exhibition-header
+  .exhibition-header__logo
+    = link_to  root_path do
+      = image_tag asset_path("logo.png")

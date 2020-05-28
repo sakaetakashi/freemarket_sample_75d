@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
 
+
   def index
   end
 
@@ -12,7 +13,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.save
+    if @product.save!
       redirect_to root_path
     else
       render :new
@@ -23,6 +24,12 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def show
@@ -45,9 +52,10 @@ class ProductsController < ApplicationController
 
   private
 
-def product_params
-  params.require(:product).permit(:category_id, :product_name, :explain, :price, :brand, :condition, :arrive_at, :shipping_fee, :region, images_attributes: [:src]).merge(user_id: current_user.id)
-end
+  def product_params
+    params.require(:product).permit(:category_id, :product_name, :explain, :price, :brand, :condition, :arrive_at, :shipping_fee, :region, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
+  end
+
   
   require 'payjp'
 
