@@ -16,25 +16,11 @@ class ProductsController < ApplicationController
   end
 
   def show
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-    @credit_card = Payjp::Token.retrieve("@credit_card.customer_id")
-    
   end
 
   def destroy
   end
   
-  require 'payjp'
-
-  def pay
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-    charge = Payjp::Charge.create(
-    amount: @item.price,
-    card: params['payjp-token'],
-    currency: 'jpy'
-    )
-    redirect_to action: :done
-  end
 
 
   
@@ -63,22 +49,70 @@ class ProductsController < ApplicationController
   #   #     @card_src = "discover.svg"
   #   # end
   # end
+  
+  require 'payjp'
+  def purchase
+    @card = CreditCard.where(user_id: current_user.id).first
+    Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
+    #保管した顧客IDでpayjpから情報取得
+    @customer = Payjp::Customer.retrieve(@card.customer_id)
+    #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
+    @default_card_information = @customer.cards.retrieve(@card.card_id)
 
-  # def purchase
-  #   @credit_card = Credit_card.where(user_id: current_user.id).first
-  #   @product = Product.find(params[:id])
-  #   Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-  #   charge = Payjp::Charge.create(
-  #     # escriptuon: test)
-  #     amount: 300, 
-  #     card: params['payjp-token'],
-  #     # customer: Payjp::Customer.retrieve(@credit_card.customer_id), 
-  #     currency: 'jpy'
-  #   )
-  #   # @product_buyer = Product.find(params[:id])
-  #   # @product_buyer.update( buyer_id: current_user.id)
-  #   redirect_to purchased_product_path
-  # end
+    # @product = Product.find(params[:id])
+    # @credit_card = Credit_card.where(user_id: current_user.id).first
+    # if credit_card.blank?
+    #   redirect_to controller: "credit_card", action: "new"
+    # else
+    #   @products = Product.find(params[:id])
+    #   Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
+    #   card = Card.where(user_id: current_user.id).first
+    #   Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
+    #   Payjp::Charge.create(
+    #   :amount => 13500, #支払金額を入力（itemテーブル等に紐づけても良い）
+    #   :customer => card.customer_id, #顧客ID
+    #   :currency => 'jpy', #日本円
+    # )
+    # redirect_to action: 'done' #完了画面に移動
+    # end
+      # charge = Payjp::Charge.create(
+      #   # escriptuon: test)
+      #   amount: 300, 
+      #   card: params['payjp-token'],
+      #   # customer: Payjp::Customer.retrieve(@credit_card.customer_id), 
+      #   currency: 'jpy'
+    # )
+    # @product_buyer = Product.find(params[:id])
+    # @product_buyer.update( buyer_id: current_user.id)
+    # redirect_to purchased_product_path
+    # end
+  end
+
+  def credit_card_blank
+    card = CreditCard.where(user_id: current_user.id).first
+    #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
+    if card.blank?
+      #登録された情報がない場合にカード登録画面に移動
+      redirect_to controller: "credit_card", action: "new"
+    else
+      Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
+      #保管した顧客IDでpayjpから情報取得
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
+      @default_card_information = customer.cards.retrieve(card.card_id)
+    end
+  end
+
+  def pay
+    card = CreditCard.where(user_id: current_user.id).first
+    Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
+    Payjp::Charge.create(
+    :amount => 13500, #支払金額を入力（itemテーブル等に紐づけても良い）
+    :customer => card.customer_id, #顧客ID
+    :currency => 'jpy', #日本円
+  )
+  redirect_to action: 'done' #完了画面に移動
+  end
 
   # private
 

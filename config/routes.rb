@@ -6,11 +6,12 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
 
-  root 'products#index'
+  root 'products#purchase'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources  :products do
     member do
       get 'purchase/:id', to: 'products#purchase'
+      post 'credit_card_blank', to: 'products#credit_card_blank'
     end
   end
   
