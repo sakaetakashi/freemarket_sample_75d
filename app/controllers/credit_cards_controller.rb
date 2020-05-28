@@ -8,7 +8,7 @@ class CreditCardsController < ApplicationController
   end
 
 
-  def pay 
+  def make 
     Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
     if params['payjp-token'].blank?
       redirect_to action: "new"
@@ -23,7 +23,7 @@ class CreditCardsController < ApplicationController
       if @card.save
         redirect_to action: "show"
       else
-        redirect_to action: "pay"
+        redirect_to action: "make"
       end
     end
   end
