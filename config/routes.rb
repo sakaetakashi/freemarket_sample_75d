@@ -11,9 +11,6 @@ Rails.application.routes.draw do
     member do
       get 'purchase/:id', to: 'products#purchase'
     end
-  end
-
-  resources :products do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
