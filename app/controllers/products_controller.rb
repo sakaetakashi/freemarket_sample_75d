@@ -6,10 +6,8 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+    @category_parent_array.unshift("---")
   end
 
   def create
@@ -38,7 +36,6 @@ class ProductsController < ApplicationController
   end
 
   def get_category_children
-    # @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
     @category_children = Category.find(params[:category_id]).children
   end
 
