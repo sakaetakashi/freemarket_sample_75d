@@ -7,53 +7,20 @@
         %h3.title
           新規投稿商品
     .productLists
-      .productList
-        = link_to "#" do
-          %figure.productList--img
-            = image_tag asset_path("chelsea.png")
-          .productList--body
-            %h3.name
-              product3
-            .details
-              %ul
-                %li
-                  30000円
-                %li
-                  = icon('fas','star')
-                  0
-              %p
-                (税込み)
-      .productList
-        = link_to "#" do
-          %figure.productList--img
-            = image_tag asset_path("manu.png")
-          .productList--body
-            %h3.name
-              product2
-            .details
-              %ul
-                %li
-                  20000円
-                %li
-                  = icon('fas','star')
-                  0
-              %p
-                (税込み)
-      .productList
-        = link_to "#" do
-          %figure.productList--img
-            = image_tag asset_path("liverpool.png")
-          .productList--body
-            %h3.name
-              product1
-            .details
-              %ul
-                %li
-                  10000円
-                %li
-                  = icon('fas','star')
-                  0
-              %p
-                (税込み)
-     
-
+      - @products.each do |product|
+        .productList
+          = link_to "#" do
+            %figure.productList--img
+              = product.images
+            .productList--body
+              %h3.name
+                = product.product_name
+              .details
+                %ul
+                  %li
+                    = number_to_currency(product.price)
+                  %li
+                    = icon('fas','star')
+                    0
+                %p
+                  (税込み)
