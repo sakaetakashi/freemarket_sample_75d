@@ -23,8 +23,11 @@ Rails.application.routes.draw do
   resources  :categories
   resources  :images
   resources  :addresses
-  
-  resources  :users, only: [:edit, :update]
+
+  resources  :credit_cards
+  resources  :users, only: :show
+
+
 
 
   resources  :credit_cards, only: [:new, :show] do
