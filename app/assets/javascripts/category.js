@@ -4,7 +4,7 @@ $(function(){
     return html;
   }
 
-  function appendChidrenBox(insertHTML){
+  function appendChildrenBox(insertHTML){
     var childSelectHtml = '';
     childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
                         <div class='listing-select-wrapper__box'>
@@ -12,13 +12,12 @@ $(function(){
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           <select>
-                          <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
                         </div>
                       </div>`;
     $('.listing-product-detail__category').append(childSelectHtml);
   }
 
-  function appendGrandchidrenBox(insertHTML){
+  function appendGrandchildrenBox(insertHTML){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
                               <div class='listing-select-wrapper__box'>
@@ -26,7 +25,6 @@ $(function(){
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
                                 </select>
-                                <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
                               </div>
                             </div>`;
     $('.listing-product-detail__category').append(grandchildSelectHtml);
@@ -50,7 +48,7 @@ $(function(){
         children.forEach(function(child){
           insertHTML += appendOption(child);
         });
-        appendChidrenBox(insertHTML);
+        appendChildrenBox(insertHTML);
       })
       .fail(function(){
         alert('カテゴリー取得に失敗しました');
@@ -81,7 +79,7 @@ $(function(){
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
           });
-          appendGrandchidrenBox(insertHTML);
+          appendGrandchildrenBox(insertHTML);
         }
       })
       .fail(function(){

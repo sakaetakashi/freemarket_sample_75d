@@ -7,8 +7,6 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
-    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
-    @category_parent_array.unshift("---")
   end
 
   def create
@@ -21,6 +19,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
 
   def update
@@ -53,7 +52,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:category_id, :product_name, :explain, :price, :brand, :condition, :arrive_at, :shipping_fee, :region, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:product).permit(:buyer_id, :category_id, :product_name, :explain, :price, :brand, :condition, :arrive_at, :shipping_fee, :region_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   
