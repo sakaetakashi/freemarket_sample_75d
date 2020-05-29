@@ -63,8 +63,8 @@
 |Column|Type|Option|
 |------|----|------|  
 |user_id|integer|null: false|
-|customer_id|integer|null: false|
-|caed_id|integer|null: false|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 belongs_to :user
 
 
