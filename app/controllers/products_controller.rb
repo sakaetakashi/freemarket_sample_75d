@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   require 'payjp'
   
   def index
+    @products = Product.includes(:images).order("created_at DESC").limit(3)
   end
 
   def new
