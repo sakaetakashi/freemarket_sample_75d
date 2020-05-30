@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+  before_action :move_to_login, only: :purchase
   require 'payjp'
   
   def index
@@ -45,47 +45,57 @@ class ProductsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
-  private
-
-def product_params
-  params.require(:product).permit(:category_id, :product_name, :explain, :price, :brand, :condition, :arrive_at, :shipping_fee, :region, images_attributes: [:src]).merge(user_id: current_user.id)
-end
-  
-
-
   def purchase
-    card = CreditCard.where(user_id: current_user.id).first
-    if card.blank?
-      redirect_to purchase_products_path
-    else
+    @product = Product.find(params[:id])
+    @image = Image.where(product_id: params[:id])
+    @card = CreditCard.where(user_id: current_user.id).first
+    @address = Address.where(user_id: current_user.id).first
+    @user = User.where(id: current_user.id).first
+    session[:product_id] = @product.id
+    if @card.present?
       Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.svg"
+      when "JCB"
+        @card_src = "jcb.svg"
+      when "MasterCard"
+        @card_src = "master-card.svg"
+      when "American Express"
+        @card_src = "american_express.svg"
+      when "Diners Club"
+        @card_src = "dinersclub.svg"
+      when "Discover"
+        @card_src = "discover.svg"
+      end
     end
   end
-
-  # def credit_card_blank
-  #   @card = CreditCard.where(user_id: current_user.id).first
-  #   if @card.blank?
-  #     redirect_to controller: "credit_card", action: "new"
-  #   else
-  #     Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
-  #     @customer = Payjp::Customer.retrieve(@card.customer_id)
-  #     @default_card_information = @customer.cards.retrieve(@card.card_id)
-  #   end
-  # end
   
   def pay
+    product = Product.find(params[:id])
     card = CreditCard.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
     Payjp::Charge.create(
-    :amount => 13500, 
-    :customer => card.customer_id, 
+    :amount => product.price, 
+    :customer => Payjp::Customer.retrieve(card.customer_id), 
     :currency => 'jpy', 
     )
+    session[:product_id] = nil
     redirect_to action: 'done' 
   end
 
+
+  private
+
+  def product_params
+    params.require(:product).permit(:category_id, :product_name, :explain, :price, :brand, :condition, :arrive_at, :shipping_fee, :region, images_attributes: [:src]).merge(user_id: current_user.id)
+  end
+  
+  def move_to_login
+    redirect_to  new_user_session_path unless user_signed_in?
+  end
  
 end
 
