@@ -305,3 +305,45 @@ input{
     }
   }
 }
+
+
+.exhibition-header{
+  height:80px;
+  text-align: center;
+
+  h1{
+    display:inline-block;
+    margin:11px 0 12px;
+
+    .header-btn{
+      height:33px;
+      width:120px;
+    }
+  }
+}
+
+.exhibition-footer{
+  height:200px;
+  width:100%;
+  text-align: center;
+  padding:60px 0;
+  background-color: #272727;
+  color: white;
+  bottom:0;
+
+  .terms-lists{
+
+    .terms{
+      font-size: 12px;
+
+      li{
+        padding-bottom:16px;
+      }
+    }
+  }
+  .footer-btn{
+    max-width:160px;
+    width:100%;
+    margin:0 auto;
+  }
+}
