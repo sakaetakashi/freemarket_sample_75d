@@ -47,10 +47,10 @@ class ProductsController < ApplicationController
 
   def purchase
     @product = Product.find(params[:id])
-    @image = Image.where(product_id: params[:id])
-    @card = CreditCard.where(user_id: current_user.id).first
-    @address = Address.where(user_id: current_user.id).first
-    @user = User.where(id: current_user.id).first
+    @image = Image.find_by(product_id: params[:id])
+    @card = CreditCard.find_by(user_id: current_user.id)
+    @address = Address.find_by(user_id: current_user.id)
+    @user = User.find_by(id: current_user.id)
     session[:product_id] = @product.id
     if @card.present?
       Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
@@ -75,7 +75,7 @@ class ProductsController < ApplicationController
   
   def pay
     product = Product.find(params[:id])
-    card = CreditCard.where(user_id: current_user.id).first
+    card = CreditCard.find_by(user_id: current_user.id)
     Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
     Payjp::Charge.create(
     :amount => product.price, 
