@@ -45,7 +45,7 @@
       = submit_tag "登録する", id: "token_submit", class:"cc_new__main__btn" 
 
 
-    = link_to "商品購入確認へ", "/products/purchase/#{session[:product_id]}"
+    = link_to "商品購入確認へ", root_path(session[:product_id])
 
 = render partial:"products/exhibition-footer"
 

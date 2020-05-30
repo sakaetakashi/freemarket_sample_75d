@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only:[:show, :purchase, :pay]
+  before_action :set_card, only:[:purchase, :pay]
   before_action :move_to_login, only: :purchase
   require 'payjp'
   
@@ -29,7 +31,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
     @grandchild = @product.category
     @child = @grandchild.parent
     @parent = @child.parent
@@ -47,9 +48,7 @@ class ProductsController < ApplicationController
   end
 
   def purchase
-    @product = Product.find(params[:id])
-    @image = Image.find_by(product_id: params[:id])
-    @card = CreditCard.find_by(user_id: current_user.id)
+    @image = Image.find_by(product_id: @product.id)
     @address = Address.find_by(user_id: current_user.id)
     @user = User.find_by(id: current_user.id)
     session[:product_id] = @product.id
@@ -75,12 +74,10 @@ class ProductsController < ApplicationController
   end
   
   def pay
-    product = Product.find(params[:id])
-    card = CreditCard.find_by(user_id: current_user.id)
     Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
     Payjp::Charge.create(
-    :amount => product.price, 
-    :customer => Payjp::Customer.retrieve(card.customer_id), 
+    :amount => @product.price, 
+    :customer => Payjp::Customer.retrieve(@card.customer_id), 
     :currency => 'jpy', 
     )
     session[:product_id] = nil
@@ -94,6 +91,14 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:category_id, :product_name, :explain, :price, :brand, :condition, :arrive_at, :shipping_fee, :region, images_attributes: [:src]).merge(user_id: current_user.id)
   end
   
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def set_card
+    @card = CreditCard.find_by(user_id: current_user.id)
+  end
+
   def move_to_login
     redirect_to  new_user_session_path unless user_signed_in?
   end
