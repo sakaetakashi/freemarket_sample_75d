@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   resources  :categories
   resources  :images
   resources  :addresses
-  resources  :users, only: [:edit, :update]
+  resources  :users, only: [:edit, :update, :show]
+
   resources  :credit_cards, only: [:new, :show] do
     collection do
       post 'show', to: 'credit_cards#show'
