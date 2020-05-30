@@ -7,13 +7,16 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name) #いらない?
+    @category_parent_array.unshift("---") #いらない?
   end
 
   def create
     @product = Product.new(product_params)
-    if @product.save!
+    if params[:product][:images_attributes] && @product.save
       redirect_to root_path
     else
+      @product.images.new
       render :new
     end
   end
