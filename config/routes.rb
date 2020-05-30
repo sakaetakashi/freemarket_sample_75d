@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   end
 
   root 'products#index'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources  :products do
-    member do
-      get 'purchase/:id', to: 'products#purchase'
+    collection do
+      get 'purchase', to: 'products#purchase'
+      post 'pay', to: 'products#pay'
+      get 'done', to: 'products#done'
     end
     collection do
       get 'get_category_children', defaults: { format: 'json' }
@@ -20,14 +23,17 @@ Rails.application.routes.draw do
   resources  :categories
   resources  :images
   resources  :addresses
-  
-  resources  :users, only: [:edit, :update]
+
+  resources  :credit_cards
+  resources  :users, only: :show
+
+
 
 
   resources  :credit_cards, only: [:new, :show] do
     collection do
       post 'show', to: 'credit_cards#show'
-      post 'pay', to: 'credit_cards#pay'
+      post 'make', to: 'credit_cards#make'
       post 'delete', to: 'credit_cards#delete'
     end
   end

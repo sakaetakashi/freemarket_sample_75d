@@ -1,0 +1,40 @@
+//credit_cards/show.html.haml
+.cc_contents{
+  background-color: #f5f5f5;
+  &__main {
+    width: 40vw;
+    background-color: white;
+    margin: 30px auto;
+    text-align: center;
+    border: 10px solid #f5f5f5;
+    line-height: 50px;
+    &__title {
+      font-size: 20px;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    &__btn {
+      background-color: #3CCACE;
+      text-decoration: none;
+    }
+  }
+}
+
+.cc_new {
+  background-color: #f5f5f5;
+  &__main{
+    width: 40vw;
+    background-color: white;
+    margin: 30px auto;
+    text-align: center;
+    border: 10px solid #f5f5f5;
+    line-height: 50px;
+    &__title {
+      font-size: 22px;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    &__btn {
+      background-color: #3CCACE;
+      text-decoration: none;
+    }
+  }
+}
