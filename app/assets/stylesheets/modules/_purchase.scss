@@ -2,7 +2,6 @@
   background-color: #f5f5f5;
   &__main{
     background-color: white;
-    height:85vh;
     width: 50vw;
     margin: 0 auto; 
     &__title{
@@ -54,10 +53,37 @@
       padding-top: 3vh;
       text-align: center;
     }
-    &__attention{
-      height: 10vh;
+    &__shipping{
       border: 1px solid #f5f5f5;
-      text-align: center;
+      padding-left: 10px;
+      padding-bottom: 20px;
+      &__word {
+        text-align: center;
+      }
+      &__user {
+        width: 40vw;
+        font-size: 14px;
+        border: 1px solid lightgray;
+        margin: 0 auto 10px;
+        padding-left: 10px;
+        border-radius: 10px;
+      }
+      &__address {
+        width: 40vw;
+        font-size: 14px;
+        border: 1px solid lightgray;
+        margin: 0 auto 10px;
+        padding-left: 10px;
+        border-radius: 10px;
+      }
+      &__info {
+        width: 40vw;
+        font-size: 14px;
+        border: 1px solid lightgray;
+        margin: 0 auto ;
+        padding-left: 10px;
+        border-radius: 10px;
+      }
     }
     &__decsion{
       height: 10vh;
@@ -76,8 +102,34 @@
       &__a{
         text-decoration: none;
         color: #3CCACE;
-        font-size: 6px;
+        font-size: 16px;
       }
+      &__b{
+        text-decoration: none;
+        color: #ea352d;
+      }
+    }
+  }
+}
+
+.done {
+  background-color: #f5f5f5;
+  text-align: center;
+  border: 10px solid #f5f5f5;
+  &__box{
+    width: 50vw;
+    height: 40vh;
+    margin: 0 auto;
+    background-color: white;
+    &__message {
+      font-size: 30px;
+      line-height: 30vh;
+    }
+    &__link {
+      text-decoration: none;
+      background-color: #3CCACE;
+      color: white;
+      padding: 8px 20px;
     }
   }
 }
