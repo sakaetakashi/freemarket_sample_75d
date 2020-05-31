@@ -1,12 +1,14 @@
-= render partial:"exhibition-header"
+= render "exhibition-header"
 
 .purchase
   .purchase__main
     %h1.purchase__main__title
       購入内容の確認
     .purchase__main__item
-      .purchase__main_item__image
-        -# = image_tag(@image[0].src.url), size: "150x150"
+      .purchase__main__item__image
+        %figure.purchase__main__item__image__box
+          = image_tag(@image.src.url)
+          -# =image_tag (product.images[0].src.url)
       %ul.purchase__main__item__ul
         %li.purchase__main__item__ul__name
           = @product.product_name
@@ -58,14 +60,9 @@
         = form_tag(action: :pay, method: :post ) do
           %button.purchase__main__decsion__btn 購入する
 
-    .purchase__main__move
+    .purchase__main__move  
       = link_to "ログイン", new_user_session_path, class: :purchase__main__move__a
       = link_to "新規登録", new_user_registration_path, class: :purchase__main__move__a
       = link_to "カード削除", credit_card_path, class: :purchase__main__move__a
-        //仮置きのリンクです
-= render partial:"exhibition-footer"
-
-
-
-
-
+        
+= render "exhibition-footer"

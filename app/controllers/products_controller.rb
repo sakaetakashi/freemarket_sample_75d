@@ -57,7 +57,6 @@ class ProductsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
-  private  
 
   def purchase
     @image = Image.find_by(product_id: @product.id)
@@ -96,6 +95,7 @@ class ProductsController < ApplicationController
     redirect_to action: 'done' 
   end
 
+  private
   def product_params
     params.require(:product).permit(:buyer_id, :category_id, :product_name, :explain, :price, :brand, :condition, :arrive_at, :shipping_fee, :region_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
