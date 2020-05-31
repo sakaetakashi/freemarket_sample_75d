@@ -1,5 +1,12 @@
 .exhibition-main
   .exhibition-main__inner
+    - if @product.errors.any?
+      .exhibition-errors
+        %ul
+          - @product.errors.full_messages.each do |message|
+            %li
+              = message
+
     =form_for @product do |f|
       %h2.form__top
         商品情報を入力
@@ -9,8 +16,6 @@
             出品画像
             %span.require
               必須
-          %p
-            5枚まで投稿できます。
           %div#image-box
             %div#previews
               - if @product.persisted?
