@@ -10,5 +10,6 @@ class Product < ApplicationRecord
   validates :user_id, :category_id, :condition, :arrive_at, :price, :shipping_fee, :region_id,  presence: true
   validates :product_name, presence: true, length: { in: 1..40 }
   validates :explain, presence: true, length: { in: 1..1000 }
+  validates :images, presence: true
 
 end
