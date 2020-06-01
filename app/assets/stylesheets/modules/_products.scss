@@ -80,7 +80,7 @@
         padding-bottom: 10px;
         margin-right: 30px;
         border-radius: 4px;
-        a{
+        a {
           width: 140px;
           display: block;
           img {
@@ -106,7 +106,7 @@
             width: 36px;
             border: 0;
             cursor: pointer;
-            background-color: #3CCACE;
+            background-color: #3ccace;
             padding: 8px;
             .searchBox__icon {
               img {
@@ -157,7 +157,7 @@
               flex-direction: column;
               position: relative;
               &__item {
-                > a{
+                > a {
                   line-height: 40px;
                   display: block;
                   width: 240px;
@@ -188,7 +188,7 @@
           color: black;
           line-height: 38px;
           padding: 0 0 0 16px;
-          > a{
+          > a {
             display: flex;
             align-items: center;
             color: black;
@@ -235,7 +235,7 @@
       &__btn {
         display: flex;
         margin: 24px 0 0 0;
-        > a{
+        > a {
           margin-right: 10px;
         }
         img {
@@ -264,7 +264,7 @@
       margin: 0 auto;
       .list {
         width: 30%;
-        margin: 16px 5% 0 0 ;
+        margin: 16px 5% 0 0;
         text-align: left;
         display: flex;
         flex-direction: column;
@@ -280,9 +280,9 @@
             border-radius: 4%;
             font-size: 30px;
             text-align: center;
-            margin: 0 5px 0 0 ;
+            margin: 0 5px 0 0;
             padding: 10px 20px;
-            background-color: #3CCACE;
+            background-color: #3ccace;
             color: #fff;
           }
           img {
@@ -296,13 +296,13 @@
           line-height: 50px;
           margin: 0 0 0 2px;
           span {
-            color: #3CCACE;
+            color: #3ccace;
           }
         }
         &__description {
           font-size: 18px;
           line-height: 1.5;
-          margin: 16px 0 0;  
+          margin: 16px 0 0;
         }
       }
     }
@@ -358,7 +358,7 @@
         content: "";
         width: 70px;
         height: 4px;
-        background-color: #3CCACE;
+        background-color: #3ccace;
         position: absolute;
         bottom: 0;
         left: 45%;
@@ -416,7 +416,7 @@
         a {
           font-size: 24px;
           text-decoration: none;
-          color: #3CCACE;
+          color: #3ccace;
           h3 {
             font-weight: bold;
           }
@@ -434,6 +434,24 @@
         .productList {
           width: 220px;
           display: inline-block;
+          .items-box_photo__sold {
+            width: 0;
+            height: 0;
+            border-top: 60px solid #ea352d;
+            border-right: 60px solid transparent;
+            border-bottom: 60px solid transparent;
+            border-left: 60px solid #ea352d;
+            z-index: 100;
+            position: relative;
+            .items-box_photo__sold__inner {
+              transform: rotate(-45deg);
+              font-size: 28px;
+              margin: -35px 0px 0px -55px;
+              color: #fff;
+              letter-spacing: 2px;
+              font-weight: 600;
+            }
+          }
           a {
             background-color: #fff;
             display: inline-block;
@@ -524,7 +542,7 @@
 //出品ボタン
 .purchaseBtn {
   width: 120px;
-  background-color: #3CCACE;
+  background-color: #3ccace;
   text-align: center;
   border-radius: 4%;
   bottom: 32px;
@@ -540,10 +558,8 @@
   }
   &__icon {
     width: 60%;
-  } 
+  }
 }
-
-
 
 .productmain {
   background-color: #f8f8f8;
@@ -641,10 +657,10 @@
                     padding: 15px;
                     border: 1px solid #dedede;
                     font-size: 14px;
-                    >a {
+                    > a {
                       text-decoration: none;
-                      color: #3CCACE;
-                    }                    
+                      color: #3ccace;
+                    }
                   }
                 }
               }
@@ -660,7 +676,7 @@
                 margin-right: auto;
                 padding: 6px 10px;
                 border-radius: 40px;
-                color: #3CCACE;
+                color: #3ccace;
                 border: 1px solid #ffb340;
               }
             }
@@ -723,8 +739,8 @@
             }
             button {
               line-height: 48px;
-              background-color: #3CCACE;
-              border: 1px solid #3CCACE;
+              background-color: #3ccace;
+              border: 1px solid #3ccace;
               color: #fff;
               width: 60%;
               font-size: 18px;
@@ -738,7 +754,7 @@
           float: left;
           a {
             text-decoration: none;
-            color: #3CCACE;
+            color: #3ccace;
           }
         }
         li:last-child {
@@ -749,7 +765,7 @@
         a {
           display: block;
           margin: 40px 0 8px;
-          color: #3CCACE;
+          color: #3ccace;
           text-decoration: none;
           font-weight: bold;
           font-size: 22px;
