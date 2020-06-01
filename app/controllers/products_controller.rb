@@ -48,8 +48,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
-    binding.pry
-    if @product.destroy
+    if @product.destroy!
       redirect_to root_path, notice: "削除が完了しました"
     else
       redirect_to action: :show
