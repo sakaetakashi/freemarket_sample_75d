@@ -1,0 +1,69 @@
+= render "exhibition-header"
+
+.purchase
+  .purchase__main
+    %h1.purchase__main__title
+      購入内容の確認
+    .purchase__main__item
+      .purchase__main__item__image
+        %figure.purchase__main__item__image__box
+          = image_tag(@image.src.url)
+      %ul.purchase__main__item__ul
+        %li.purchase__main__item__ul__name
+          = @product.product_name
+        %li.purchase__main__item__ul__price
+          %p ¥#{@product.price}
+        %li.purchase__main__item__ul__komi
+          (税込み＋送料込み)
+    .purchase__main__value
+      %ul.purchase__main__value__ul
+        %li 支払い金額
+        %li 
+          %p ¥ #{@product.price}
+    .purchase__main__credit_card
+      %p クレジットカード情報
+      - if @default_card_information.blank?
+        = link_to "カード情報を登録してください",  new_credit_card_path, class: :purchase__main__move__a
+      - else
+        = "**** **** **** " + @default_card_information.last4
+        - exp_month = @default_card_information.exp_month.to_s
+        - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+        %br
+        = exp_month + " / " + exp_year
+        = image_tag "#{@card_src}",alt: @card_brand, id: "card_image"
+    .purchase__main__shipping
+      %p.purchase__main__shipping__word 購入者
+      .purchase__main__shipping__user
+        = @user.family_name
+        = @user.first_name
+      %p.purchase__main__shipping__word 送り先
+      .purchase__main__shipping__address
+        %p
+          = "〒 #{@address.post_code}"
+        %p
+          = @address.prefecture
+          = @address.city
+          = @address.block
+        %p
+          = @address.building
+      %p.purchase__main__shipping__word 連絡先
+      .purchase__main__shipping__info
+        %p
+          = "TEL：#{@address.telephone_number}"
+        %p
+          = @user.email
+    .purchase__main__decsion     
+      - if @default_card_information.blank?
+        = link_to "カード情報を登録してください",  new_credit_card_path, class: :purchase__main__move__b
+      -else
+        = form_tag(action: :pay, method: :post ) do
+          %button.purchase__main__decsion__btn 購入する
+
+    .purchase__main__move  
+      = link_to "ログイン", new_user_session_path, class: :purchase__main__move__a
+      = link_to "新規登録", new_user_registration_path, class: :purchase__main__move__a
+      = link_to "カード削除", credit_card_path, class: :purchase__main__move__a
+        
+= render "exhibition-footer"
+
+

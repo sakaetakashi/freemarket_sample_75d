@@ -2,6 +2,18 @@ ja:
   activerecord:
     attributes:
       user:
+        family_name: 名字
+        first_name: 名前
+        family_name_kana: ふりがな(名字)
+        first_name_kana: ふりがな(名前)
+        nickname: ニックネーム
+        birthday: 誕生日
+        post_code: 郵便番号
+        prefecture: 都道府県
+        city: 市区町村
+        block: 番地
+        building: 建物など
+        telephone_number: 電話番号
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻

@@ -1,0 +1,20 @@
+= render partial:"products/exhibition-header"
+.cc_contents
+  .cc_contents__main
+    %label.cc_contents__main__title 登録クレジットカード情報
+    %br
+    = "**** **** **** " + @default_card_information.last4
+    %br
+    - exp_month = @default_card_information.exp_month.to_s
+    - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+    = exp_month + " / " + exp_year
+    = form_tag(delete_credit_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
+      %input{ type: "hidden", name: "card_id", value: "" }
+      %button.cc_contents__main__btn 削除する
+
+    - if session[:product_id].blank?
+      = link_to "マイページへ戻る", "/users/#{current_user.id}", class: :cc_contents__main__product
+    - else
+      = link_to "商品購入確認へ", "/products/purchase/#{session[:product_id]}", class: :cc_contents__main__product 
+
+= render partial:"products/exhibition-footer"
