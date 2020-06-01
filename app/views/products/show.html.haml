@@ -5,7 +5,7 @@
       .topContent
         .itemBox
           %h2.itemBox__name
-            = @product.name
+            = @product.product_name
           .itemBox__body
             %ul.up-image
               %li.slide-image
@@ -58,7 +58,7 @@
                   %th 発送元の地域
                   %td
                     %a(href="#")
-                      =@product.region
+                      =@product.region.name
                 %tr
                   %th 発送日の目安
                   %td
