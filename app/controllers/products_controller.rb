@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 
   before_action :set_product, only:[:show, :purchase, :pay]
   before_action :set_card, only:[:purchase, :pay]
-  before_action :move_to_login, only: :purchase
+  before_action :move_to_login, only: [:purchase, :new, :edit, :destroy]
 
   require 'payjp'
  
@@ -116,6 +116,6 @@ class ProductsController < ApplicationController
   def move_to_login
     redirect_to  new_user_session_path unless user_signed_in?
   end
- 
+
 end
 
