@@ -21,10 +21,11 @@ class UsersController < ApplicationController
 
   def destroy
   end
-  
-  # private
-  #   def user_params
-  #     params.require(:address).permit(:post_code, :prefecture, :city, :block, :building)
-  #   end
+
+  private
+
+    def user_params
+      params.require(:user).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :nickname, :birthday, :email)
+    end
 
 end
