@@ -64,7 +64,7 @@
             - if user_signed_in?
               -if current_user.id == @product.user_id
                 .DeleteBtn
-                  =link_to product_path, method: :delete, class:"Delete" do
+                  =link_to "/products/#{params[:id]}", method: "delete", class:"Delete" do
                     = icon('fa', 'trash-alt')
                     商品削除
               - else
