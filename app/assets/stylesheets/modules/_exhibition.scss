@@ -6,7 +6,7 @@
   &__logo {
     text-align: center;
     a {
-      img{    
+      img {
         width: 200px;
         height: 50px;
       }
@@ -47,7 +47,7 @@
 //出品画面
 .exhibition-main {
   padding: 50px 200px;
-  background-color: #3CCACE;
+  background-color: #3ccace;
   &__inner {
     background-color: #fff;
     .exhibition-errors {
@@ -108,7 +108,7 @@
             }
           }
         }
-        
+
         p {
           font-size: 15px;
         }
@@ -122,7 +122,7 @@
             margin-bottom: 10px;
             display: flex;
             .js-remove {
-              background-color:  #3CCACE;
+              background-color: #3ccace;
               color: white;
               width: 50px;
               text-align: center;
