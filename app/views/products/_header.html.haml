@@ -48,6 +48,8 @@
         - if user_signed_in?
           %li.pcHeader__inner__nav__right__item
             = link_to "ログアウト", destroy_user_session_path, method: :delete
+          %li.pcHeader__inner__nav__right__item
+            = link_to "マイページ", user_path(current_user.id)
         - else
           %li.pcHeader__inner__nav__right__item
             = link_to "ログイン", new_user_session_path

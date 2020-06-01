@@ -1,9 +1,8 @@
 = render partial:"exhibition-header"
-
-%h1
-  購入しました！
-
-
-= link_to "購入画面", "products/purchase"
+.done
+  .done__box
+    %h1.done__box__message
+      購入しました!!
+    = link_to "トップページ", root_path, class: :done__box__link
 
 = render partial:"exhibition-footer"
