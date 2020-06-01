@@ -16,7 +16,9 @@
       justify-content: space-around;
       height: 22vh;
       &__image{
-        margin: 10px 0 0 10px;
+        margin: 0 auto;
+        &__box{
+        }
       }
       &__ul{
         width: 30vw;

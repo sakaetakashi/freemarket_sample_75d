@@ -12,6 +12,6 @@
       %input{ type: "hidden", name: "card_id", value: "" }
       %button.cc_contents__main__btn 削除する
 
-    = link_to "商品購入確認へ", root_path(session[:product_id]), class: :cc_contents__main__product 
+    = link_to "商品購入確認へ", "/products/purchase/#{session[:product_id]}", class: :cc_contents__main__product 
 
 = render partial:"products/exhibition-footer"

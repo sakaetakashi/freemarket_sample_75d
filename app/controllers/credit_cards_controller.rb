@@ -3,7 +3,7 @@ class CreditCardsController < ApplicationController
   require "payjp"
 
   def new
-    redirect_to action: "show" if card.exists?
+    redirect_to action: "show" if @card.present?
   end
 
   def pay 
@@ -29,29 +29,29 @@ class CreditCardsController < ApplicationController
   end
 
   def show 
-    if card.blank?
+    if @card.blank?
       redirect_to action: "new" 
     else
       Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
     end
   end
 
   def delete 
-    if card.blank?
+    if @card.blank?
     else
       Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
-      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
-      card.delete
+      @card.delete
     end
       redirect_to action: "new"
   end
 
   private
   def set_card
-    card = CreditCard.find_by(user_id: current_user.id)
+    @card = CreditCard.find_by(user_id: current_user.id)
   end
 
 end

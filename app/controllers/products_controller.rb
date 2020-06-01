@@ -57,7 +57,6 @@ class ProductsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
-  private  
 
   def purchase
     @image = Image.find_by(product_id: @product.id)
@@ -92,10 +91,16 @@ class ProductsController < ApplicationController
     :customer => Payjp::Customer.retrieve(@card.customer_id), 
     :currency => 'jpy', 
     )
+    @product.save(buyer_id: current_user.id)
     session[:product_id] = nil
-    redirect_to action: 'done' 
+    redirect_to "/products/done"
+    
   end
 
+  def done
+  end
+
+  private
   def product_params
     params.require(:product).permit(:buyer_id, :category_id, :product_name, :explain, :price, :brand, :condition, :arrive_at, :shipping_fee, :region_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
