@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources  :images, only: [:new, :show]
   resources  :addresses
   
-  resources  :users, only: [:edit, :update, :new, :show]
+  resources  :users, only: [:edit, :update, :show]
 
 
   resources  :credit_cards, only: [:new, :show] do
