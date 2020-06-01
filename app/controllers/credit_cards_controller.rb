@@ -1,5 +1,6 @@
 class CreditCardsController < ApplicationController
   before_action :set_card, only: [:new, :show, :delete]
+  before_action :move_to_login, only: [:new, :pay ]
   require "payjp"
 
   def new
@@ -52,6 +53,10 @@ class CreditCardsController < ApplicationController
   private
   def set_card
     @card = CreditCard.find_by(user_id: current_user.id)
+  end
+
+  def move_to_login
+    redirect_to  new_user_session_path unless user_signed_in?
   end
 
 end

@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 
   before_action :set_product, only:[:show, :purchase, :pay]
   before_action :set_card, only:[:purchase, :pay]
-  before_action :move_to_login, only: :purchase
+  before_action :move_to_login, only: [:purchase, :new, :edit, :destroy]
 
   require 'payjp'
  
@@ -91,7 +91,7 @@ class ProductsController < ApplicationController
     :customer => Payjp::Customer.retrieve(@card.customer_id), 
     :currency => 'jpy', 
     )
-    @product.save(buyer_id: current_user.id)
+    @product.update(buyer_id: current_user.id)
     session[:product_id] = nil
     redirect_to "/products/done"
     
@@ -116,6 +116,6 @@ class ProductsController < ApplicationController
   def move_to_login
     redirect_to  new_user_session_path unless user_signed_in?
   end
- 
+
 end
 
