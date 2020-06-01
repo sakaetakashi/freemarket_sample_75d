@@ -91,8 +91,13 @@ class ProductsController < ApplicationController
     :customer => Payjp::Customer.retrieve(@card.customer_id), 
     :currency => 'jpy', 
     )
+    @product.save(buyer_id: current_user.id)
     session[:product_id] = nil
-    redirect_to action: 'done' 
+    redirect_to "/products/done"
+    
+  end
+
+  def done
   end
 
   private
