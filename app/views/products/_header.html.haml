@@ -2,7 +2,7 @@
   .pcHeader__inner
     .pcHeader__inner__main
       %h1.pcHeader__inner__main__icon
-        = link_to "#" do
+        = link_to root_path do
           = image_tag asset_path("logo.png")
       .pcHeader__inner__main__searchBox
         = form_tag "#" do
@@ -48,6 +48,8 @@
         - if user_signed_in?
           %li.pcHeader__inner__nav__right__item
             = link_to "ログアウト", destroy_user_session_path, method: :delete
+          %li.pcHeader__inner__nav__right__item
+            = link_to "マイページ", user_path(current_user.id)
         - else
           %li.pcHeader__inner__nav__right__item
             = link_to "ログイン", new_user_session_path

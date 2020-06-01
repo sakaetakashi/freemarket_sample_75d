@@ -9,9 +9,13 @@
     .productLists
       - @products.each do |product|
         .productList
-          = link_to "#" do
+          = link_to product_path(product) do
             %figure.productList--img
               =image_tag (product.images[0].src.url)
+              -if product.buyer_id.present?
+                .items-box_photo__sold
+                  .items-box_photo__sold__inner
+                    SOLD
             .productList--body
               %h3.name
                 = product.product_name
@@ -23,4 +27,4 @@
                     = icon('fas','star')
                     0
                 %p
-                  (税込み)
+                (税込み)

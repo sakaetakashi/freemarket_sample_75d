@@ -4,10 +4,11 @@
   &__main {
     width: 40vw;
     background-color: white;
-    margin: 30px auto;
+    margin: 0 auto;
     text-align: center;
     border: 10px solid #f5f5f5;
     line-height: 50px;
+    padding: 10vh 50px;
     &__title {
       font-size: 20px;
       border-bottom: 1px solid #f5f5f5;
@@ -15,6 +16,11 @@
     &__btn {
       background-color: #3CCACE;
       text-decoration: none;
+    }
+    &__product {
+      text-decoration: none;
+      color: gray;
+      border-bottom: 1px solid black;
     }
   }
 }
@@ -24,10 +30,11 @@
   &__main{
     width: 40vw;
     background-color: white;
-    margin: 30px auto;
+    margin: 0 auto;
     text-align: center;
     border: 10px solid #f5f5f5;
     line-height: 50px;
+    padding: 10px;
     &__title {
       font-size: 22px;
       border-bottom: 1px solid #f5f5f5;
@@ -35,6 +42,12 @@
     &__btn {
       background-color: #3CCACE;
       text-decoration: none;
+      
+      }
+    &__move {
+      text-decoration: none;
+      color: gray;
+      border-bottom: 1px solid black;
     }
   }
 }

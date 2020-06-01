@@ -12,5 +12,9 @@
       %input{ type: "hidden", name: "card_id", value: "" }
       %button.cc_contents__main__btn 削除する
 
+    - if session[:product_id].blank?
+      = link_to "マイページへ戻る", "/users/#{current_user.id}", class: :cc_contents__main__product
+    - else
+      = link_to "商品購入確認へ", "/products/purchase/#{session[:product_id]}", class: :cc_contents__main__product 
 
 = render partial:"products/exhibition-footer"

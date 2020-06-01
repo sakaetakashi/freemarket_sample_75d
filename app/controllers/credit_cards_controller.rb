@@ -1,16 +1,17 @@
 class CreditCardsController < ApplicationController
-
+  before_action :set_card, only: [:new, :show, :delete]
+  before_action :move_to_login, only: [:new, :pay ]
   require "payjp"
 
   def new
-    card = CreditCard.where(user_id: current_user.id)
-    redirect_to action: "show" if card.exists?
+    redirect_to action: "show" if @card.present?
   end
 
-
-  def make 
+  def register
     Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
+  
     if params['payjp-token'].blank?
+      flash[:notice]="カードの内容を確認してください"
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
@@ -23,35 +24,41 @@ class CreditCardsController < ApplicationController
       if @card.save
         redirect_to action: "show"
       else
-        redirect_to action: "make"
+        redirect_to action: "register"
       end
     end
   end
 
-
-  def delete 
-    card = CreditCard.where(user_id: current_user.id).first
-    if card.blank?
+  def show 
+    if @card.blank?
+      redirect_to action: "new" 
     else
       Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
-      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
+    end
+  end
+
+  def delete 
+    if @card.blank?
+    else
+      Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
-      card.delete
+      @card.delete
     end
       redirect_to action: "new"
   end
 
-
-  def show 
-    card = CreditCard.where(user_id: current_user.id).first
-    if card.blank?
-      redirect_to action: "new" 
-    else
-      Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
-    end
+  private
+  def set_card
+    @card = CreditCard.find_by(user_id: current_user.id)
   end
+
+  def move_to_login
+    redirect_to  new_user_session_path unless user_signed_in?
+  end
+
 end
   
   

@@ -1,4 +1,4 @@
-= render partial: "homes/header"
+= render partial: "products/header"
 %body.user-mein-body
   .default-container
     %nav.bread-crumbs
@@ -22,11 +22,11 @@
             %li
               = link_to "お気に入り", "#", class:"mypage-nav-list-item"
             %li
-              = link_to "クレジットカード登録/変更", "#", class:"mypage-nav-list-item"
+              = link_to "クレジットカード登録/変更", "/credit_cards/show", class:"mypage-nav-list-item"
             %li
               = link_to "お問い合わせ", "#", class:"mypage-nav-list-item"
             %li
-              = link_to "ログアウト", "#", class:"mypage-nav-list-item"
+              = link_to "ログアウト", destroy_user_session_path,method: :delete, class:"mypage-nav-list-item"
       .l-content
         %ul.mypage-top-tabs
           %li.mypage-nav-info
@@ -37,5 +37,5 @@
             = link_to "質問", "#", class:"mypage-nav-list-item"
           %li.mypage-nav-info
             = link_to "お知らせ", "#", class:"mypage-nav-list-item"
-= render partial: "homes/footer"
-= render partial: "homes/purchasebtn"
+= render partial: "products/footer"
+= render partial: "products/purchasebtn"
