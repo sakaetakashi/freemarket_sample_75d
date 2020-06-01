@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_action :set_product, only:[:show, :purchase, :pay]
+  before_action :set_product, only:[:show, :purchase, :pay, :destroy]
   before_action :set_card, only:[:purchase, :pay]
   before_action :move_to_login, only: [:purchase, :new, :edit, :destroy]
 
@@ -47,6 +47,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    if @product.destroy!
+      redirect_to root_path, notice: "削除が完了しました"
+    else
+      redirect_to action: :show
+    end
   end
 
   def get_category_children
