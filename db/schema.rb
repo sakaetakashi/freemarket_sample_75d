@@ -34,9 +34,13 @@ ActiveRecord::Schema.define(version: 2020_05_27_101001) do
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "customer_id", null: false
-    t.string "card_id", null: false
-    t.integer "user_id", null: false
+    t.string "card_owner"
+    t.integer "card_number"
+    t.date "limit_month"
+    t.date "limit_year"
+    t.integer "security_code"
+    t.string "company"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_101001) do
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+
     t.string "product_name", null: false
     t.text "explain", null: false
     t.integer "price", null: false

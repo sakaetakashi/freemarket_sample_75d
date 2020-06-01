@@ -5,34 +5,32 @@
       .topContent
         .itemBox
           %h2.itemBox__name
-            product3
+            = @product.name
           .itemBox__body
-            %ul
-              %li
-                = image_tag asset_path("chelsea.png")
-                %ul
-                  %li
-                    = image_tag asset_path("chelsea.png")
-                  %li
-                    = image_tag asset_path("chelsea.png")
-                  %li
-                    = image_tag asset_path("chelsea.png")
+            %ul.up-image
+              %li.slide-image
+                = image_tag (@product.images[0].src.url)
+            %ul.down-image
+              - @product.images[1..-1].each do |image|
+                %li.thimbnail-image
+                  = image_tag image.src.url
           .itemBox__price
             %span 
-              ¥3000
+              = @product.price
             .itemBox__price-detail
               %span
                 (税込み)
               %span 
                 送料込み
           .itemDetail
-            親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+            = @product.explain
           .table
             %table
               %tbody
                 %tr
                   %th 出品者
-                  %td hoge
+                  %td 
+                    = @product.user.nickname
                 %tr
                   %th カテゴリー
                   %td
@@ -49,17 +47,22 @@
                   %td
                 %tr
                   %th 商品の状態
-                  %td 未使用に近い
+                  %td
+                    =@product.condition
                 %tr
                   %th 配送料の負担
-                  %td 送料込み（出品者負担）
+                  %td 
+                    =@product.shipping_fee
+                    送料込み（出品者負担）
                 %tr
                   %th 発送元の地域
                   %td
-                    %a(href="#") 岩手県
+                    %a(href="#")
+                      =@product.region
                 %tr
                   %th 発送日の目安
-                  %td 4-7日で発送
+                  %td
+                    =@product.arrive_at
           .optionalArea
             %ul
               %li.optionalBtn.likeBtn
@@ -70,6 +73,15 @@
                 = link_to "#" do
                   = icon('fa', 'flag')
                   不適切な商品の通報
+        .edit-deleteBox
+          - if user_signed_in? && current_user.id == @product.user_id
+            = link_to "商品の編集", "/products/:id/edit", class: "submit-btn submit-btn-blue"
+            %p
+              or
+            = link_to "出品を再開する", "", class: "submit-btn submit-btn-blue"
+            = link_to "この商品を削除する", "/products/:id", class: "submit-btn submit-btn-gray"
+          - else
+            =link_to "購入画面に進む", "#", class: "submit-btn submit-btn-blue"
         .commentBox
           = form_tag do
             = text_area :keyword,''

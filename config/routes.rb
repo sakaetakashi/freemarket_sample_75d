@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
   end
   resources  :categories
-  resources  :images
+  resources  :images, only: [:new, :show]
   resources  :addresses
   resources  :users, only: [:edit, :update, :show]
 

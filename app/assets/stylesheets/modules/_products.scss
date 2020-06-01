@@ -564,10 +564,10 @@
           }
           &__body {
             margin: 16px 0 0;
-            ul {
+            .up-image {
               display: flex;
               position: relative;
-              > li {
+              .slide-image{
                 display: flex;
                 flex-direction: column;
                 width: 560px;
@@ -579,20 +579,22 @@
                   width: 100%;
                   vertical-align: bottom;
                 }
-                ul {
-                  display: flex;
-                  justify-content: center;
-                  margin-top: 10px;
-                  li {
-                    width: 25%;
-                    margin: 0 10px 0 0;
-                    img {
-                      object-fit: cover;
-                      height: 87px;
-                      vertical-align: bottom;
-                      width: 100%;
-                    }
-                  }
+              }
+            }
+            .down-image{
+              display: flex;
+              justify-content: center;
+              margin-top: 10px;
+              width:100%;
+              .thumbnail-image{
+                display: flex;
+                width: 25%;
+                margin: 0 10px 0 0;
+                img {
+                  object-fit: cover;
+                  height: 87px;
+                  vertical-align: bottom;
+                  width: 100%;
                 }
               }
             }
@@ -674,6 +676,31 @@
                 }
               }
             }
+          }
+        }
+        .edit-deleteBox{
+          background-color:#fff;
+          padding-top:8px;
+          padding-bottom:8px;
+          margin-top:10px;
+          margin-bottom:10px;
+
+          .submit-btn{
+            line-height: 48px;
+            font-size:14px;
+            text-align: center;
+            display:block;
+            color:white;
+            margin:8px 16px;
+          }
+          .submit-btn-blue{
+            background-color: #3CCACE;
+          }
+          .submit-btn-gray{
+            background-color: #aaa;
+          }
+          p{
+            text-align: center;
           }
         }
         .commentBox {
