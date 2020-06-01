@@ -9,7 +9,7 @@
     .productLists
       - @products.each do |product|
         .productList
-          = link_to "#" do
+          = link_to product_path(product) do
             %figure.productList--img
               =image_tag (product.images[0].src.url)
             .productList--body
