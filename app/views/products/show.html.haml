@@ -9,11 +9,15 @@
           .itemBox__body
             %ul.up-image
               %li.slide-image
-                = image_tag (@product.images[0].src.url)
+                = image_tag (@product.images[0].src.url), class: "image-main-photo"
+                -if @product.buyer_id.present?
+                  .sold-band
+                    .sold-band-inner
+                      SOLD
             %ul.down-image
-              - @product.images[1..-1].each do |image|
-                %li.thimbnail-image
-                  = image_tag image.src.url
+              - @product.images.each do |image|
+                %li.thumbnail-image
+                  = image_tag image.src.url, class: "image-sub-photo"
           .itemBox__price
             %span
               = @product.price
