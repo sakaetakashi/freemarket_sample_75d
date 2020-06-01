@@ -7,8 +7,7 @@
     .purchase__main__item
       .purchase__main__item__image
         %figure.purchase__main__item__image__box
-          -# = image_tag(@image.src.url)
-          -# =image_tag (product.images[0].src.url)
+          = image_tag(@image.src.url)
       %ul.purchase__main__item__ul
         %li.purchase__main__item__ul__name
           = @product.product_name
@@ -64,14 +63,7 @@
       = link_to "ログイン", new_user_session_path, class: :purchase__main__move__a
       = link_to "新規登録", new_user_registration_path, class: :purchase__main__move__a
       = link_to "カード削除", credit_card_path, class: :purchase__main__move__a
-<<<<<<< Updated upstream
         
 = render "exhibition-footer"
-=======
-= render partial:"exhibition-footer"
 
 
-
-
-
->>>>>>> Stashed changes

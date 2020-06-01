@@ -10,8 +10,8 @@
       - @products.each do |product|
         .productList
           = link_to "#" do
-            -# %figure.productList--img
-              -# =image_tag (product.images[0].src.url)
+            %figure.productList--img
+              =image_tag (product.images[0].src.url)
             .productList--body
               %h3.name
                 = product.product_name
