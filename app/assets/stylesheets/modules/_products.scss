@@ -648,6 +648,7 @@
               }
             }
           }
+          
           .optionalArea {
             display: flex;
             justify-content: space-between;
@@ -673,6 +674,18 @@
                   text-decoration: none;
                 }
               }
+            }
+          }
+          .DeleteBtn {
+            margin: 0 auto;
+            .Delete {
+              margin: 0 auto;
+              border: 1px solid #272727;
+              border-radius: 40px;
+              color: #333;
+              font-size: 16px;
+              padding: 6px 10px;
+              text-decoration: none;
             }
           }
         }
