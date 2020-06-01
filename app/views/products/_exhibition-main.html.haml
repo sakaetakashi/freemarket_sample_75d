@@ -1,5 +1,12 @@
 .exhibition-main
   .exhibition-main__inner
+    - if @product.errors.any?
+      .exhibition-errors
+        %ul
+          - @product.errors.full_messages.each do |message|
+            %li
+              = message
+
     =form_for @product do |f|
       %h2.form__top
         商品情報を入力
@@ -9,8 +16,6 @@
             出品画像
             %span.require
               必須
-          %p
-            5枚まで投稿できます。
           %div#image-box
             %div#previews
               - if @product.persisted?
@@ -45,7 +50,7 @@
             %span.listing-default--require 必須
             .listing-select-wrapper
               .listing-select-wrapper__box
-                = f.collection_select :category_id, Category.roots, :id, :name ,{prompt: "選択してください"}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                = f.collection_select :category_id, Category.roots, :id, :name ,{prompt: "選択してください"}, {class: 'listing-select-wrapper__box--select', id: 'parent_category', name: "" }
           
           
         .sell__block__form
