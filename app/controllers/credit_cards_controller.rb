@@ -7,7 +7,7 @@ class CreditCardsController < ApplicationController
     redirect_to action: "show" if @card.present?
   end
 
-  def pay 
+  def register
     Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
   
     if params['payjp-token'].blank?
@@ -24,7 +24,7 @@ class CreditCardsController < ApplicationController
       if @card.save
         redirect_to action: "show"
       else
-        redirect_to action: "pay"
+        redirect_to action: "register"
       end
     end
   end
