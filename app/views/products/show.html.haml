@@ -92,7 +92,7 @@
               - @messages.each do |message|
                 .one-message
                   %p.message-userName
-                    = link_to message.user.nickname, "/users/#{message.user_id}"
+                    = link_to message.user.nickname, "/users/#{message.user_id}",  class: "user-link"
                   .message-text
                     = message.text
           - if current_user
