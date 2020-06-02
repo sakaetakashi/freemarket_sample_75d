@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_101001) do
+ActiveRecord::Schema.define(version: 2020_06_01_105306) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_code", null: false
@@ -34,13 +34,9 @@ ActiveRecord::Schema.define(version: 2020_05_27_101001) do
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "card_owner"
-    t.integer "card_number"
-    t.date "limit_month"
-    t.date "limit_year"
-    t.integer "security_code"
-    t.string "company"
-    t.integer "user_id"
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,8 +49,15 @@ ActiveRecord::Schema.define(version: 2020_05_27_101001) do
     t.index ["product_id"], name: "index_images_on_product_id"
   end
 
-  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "text"
+    t.integer "user_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "product_name", null: false
     t.text "explain", null: false
     t.integer "price", null: false

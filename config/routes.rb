@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
+    resources  :messages, only: :create
   end
   resources  :categories
   resources  :images, only: [:new, :show]
@@ -30,5 +31,5 @@ Rails.application.routes.draw do
       post 'delete', to: 'credit_cards#delete'
     end
   end
- 
+
 end

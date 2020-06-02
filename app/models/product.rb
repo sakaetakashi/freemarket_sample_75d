@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   belongs_to :category, dependent: :destroy
   belongs_to :user
   belongs_to :buyer, class_name: "User", optional: true
+  has_many :messages
 
   validates :user_id, :category_id, :condition, :arrive_at, :price, :shipping_fee, :region_id,  presence: true
   validates :product_name, presence: true, length: { in: 1..40 }
