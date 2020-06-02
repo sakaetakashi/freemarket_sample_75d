@@ -80,9 +80,16 @@
                     編集
               - elsif current_user.id != @product.user_id && @product.buyer_id.blank?
                 %ul
-                  %li.optionalBtn.likeBtn
-                    = icon('fa', 'star')
-                    お気に入り 0
+                  - if Favorite.find_by(user_id: current_user.id, product_id: @product.id)
+                    = link_to("/favorites/#{@product.id}/destroy", method: :post) do
+                      %li.optionalBtn.already
+                        = icon('fa', 'star')
+                        お気に入り済み！ 0
+                  -else 
+                    = link_to("/favorites/#{@product.id}/create", method: :post) do
+                      %li.optionalBtn.none
+                        = icon('fa', 'star')
+                        お気に入り 0                   
                 %ul
                   %li.buyBtn
                     = link_to "/products/purchase/#{@product.id}" do
@@ -94,9 +101,16 @@
                       不適切な商品の通報 
               - else
                 %ul
-                  %li.optionalBtn.likeBtn
-                    = icon('fa', 'star')
-                    お気に入り 0
+                  - if Favorite.find_by(user_id: current_user.id, product_id: @product.id)
+                    = link_to("/favorites/#{@product.id}/destroy", method: :post) do
+                      %li.optionalBtn.already
+                        = icon('fa', 'star')
+                        お気に入り済み！ 0
+                  -else 
+                    = link_to("/favorites/#{@product.id}/create", method: :post) do
+                      %li.optionalBtn.none
+                        = icon('fa', 'star')
+                        お気に入り 0  
                 %ul.optional
                   %li.optionalBtn
                     = link_to "#" do

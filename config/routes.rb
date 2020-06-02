@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   end
 
   root 'products#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources  :products do
     collection do
       get 'purchase/:id', to: 'products#purchase'
@@ -18,6 +17,10 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
+
+  post "favorites/:product_id/create" => "favorites#create"
+  post "favorites/:product_id/destroy" => "favorites#destroy"
+
   resources  :categories
   resources  :images, only: [:new, :show]
   resources  :addresses
