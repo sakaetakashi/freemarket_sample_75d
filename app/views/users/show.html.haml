@@ -16,13 +16,13 @@
             %li
               = link_to "プロフィール", "#", class:"mypage-nav-list-item"
             %li
-              = link_to "商品を出品する", "new_product", class:"mypage-nav-list-item"
+              = link_to "商品を出品する", new_product_path, class:"mypage-nav-list-item"
             %li
               = link_to "商品を購入する", "#", class:"mypage-nav-list-item"
             %li
               = link_to "お気に入り", "#", class:"mypage-nav-list-item"
             %li
-              = link_to "クレジットカード登録/変更", "/credit_cards/show", class:"mypage-nav-list-item"
+              = link_to "クレジットカード登録", credit_card_path(@user), class:"mypage-nav-list-item"
             %li
               = link_to "お問い合わせ", "#", class:"mypage-nav-list-item"
             %li
@@ -32,7 +32,7 @@
           購入した商品
         .l-content-box
           - @products.each do |product|
-            = link_to "#" do
+            = link_to product_path(product) do
               .bought-item
                 .bought-item__name
                   = product.product_name

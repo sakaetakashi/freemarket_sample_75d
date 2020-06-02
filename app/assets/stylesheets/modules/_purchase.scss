@@ -3,7 +3,8 @@
   &__main{
     background-color: white;
     width: 50vw;
-    margin: 0 auto; 
+    margin: 0 auto;
+    padding: 20px 0px; 
     &__title{
       height: 10vh;
        text-align: center;
@@ -97,6 +98,7 @@
         height: 5vh;
         width: 50vw;
         text-decoration: none;
+        cursor: pointer;
       }
     }
     &__move{
