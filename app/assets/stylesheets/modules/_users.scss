@@ -53,15 +53,40 @@
         }
       }
       .l-content {
-        float: right;
-        margin: 0 30px;
-        font-weight: 900;
-        font-size: 20px;
-        .mypage-nav-info {
-          padding: 20px;
-          .mypage-nav-list-item {
+        font-size: 25px;
+        width: 100vw;
+        h1 {
+          text-align: center;
+        }
+        .l-content-box {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          a {
             text-decoration: none;
-            color: black;
+            font-size: 20px;
+            margin-right: 20px;
+            background-color: red;
+            margin-top: 20px;
+            .bought-item {
+              background-color: #f8f8f8;
+              height: 250px;
+              width: 300px;
+              &__name {
+                color: black;
+                text-align: center;
+              }
+              &__img {
+                width: 200px;
+                height: 200px;
+                margin: auto;
+                img {
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+            }
           }
         }
       }
