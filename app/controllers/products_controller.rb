@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(update_params)
-      redirect_to root_path
+      redirect_to root_path, notice: '更新されました'
     else
       render :edit
     end
