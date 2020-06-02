@@ -99,10 +99,11 @@
             - if @messages
               - @messages.each do |message|
                 .one-message
-                  %p.message-userName
+                  .message-userName
                     = link_to message.user.nickname, "/users/#{message.user_id}",  class: "user-link"
-                  .message-text
-                    = message.text
+                  .speech-bubble
+                    .message-text
+                      = message.text
           - if current_user
             = form_with(model: [@product, @message], local: true) do |f|
               = f.text_area :text, placeholder: "コメントを入力する", rows: "2"
