@@ -4,7 +4,7 @@
   .cc_new__main
     %h1.cc_new__main__title
       新規カード登録
-    = form_tag(pay_credit_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
+    = form_tag(register_credit_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
       %label カード番号
       = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
       %br
@@ -44,8 +44,10 @@
       #card_token
       = submit_tag "登録する", id: "token_submit", class:"cc_new__main__btn" 
 
-
-    = link_to "商品購入確認へ", root_path(session[:product_id])
+    - if session[:product_id].blank?
+      = link_to "マイページへ戻る", "/users/#{current_user.id}", class: :cc_new__main__move
+    - else
+      = link_to "商品購入確認へ", "/products/purchase/#{session[:product_id]}", class: :cc_new__main__move
 
 = render partial:"products/exhibition-footer"
 

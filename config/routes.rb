@@ -19,14 +19,14 @@ Rails.application.routes.draw do
     end
   end
   resources  :categories
-  resources  :images
+  resources  :images, only: [:new, :show]
   resources  :addresses
   resources  :users, only: [:edit, :update, :show]
 
   resources  :credit_cards, only: [:new, :show] do
     collection do
       post 'show', to: 'credit_cards#show'
-      post 'pay', to: 'credit_cards#pay'
+      post 'register', to: 'credit_cards#register'
       post 'delete', to: 'credit_cards#delete'
     end
   end

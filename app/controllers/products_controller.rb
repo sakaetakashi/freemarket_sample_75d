@@ -1,9 +1,10 @@
 class ProductsController < ApplicationController
 
-  before_action :set_product, only:[:show, :purchase, :pay]
+  before_action :set_product, only:[:show, :purchase, :pay, :destroy]
   before_action :set_card, only:[:purchase, :pay]
-  before_action :move_to_login, only: :purchase
   before_action :move_to_index_if_not_seller, only: [:edit]
+  before_action :move_to_login, only: [:purchase, :new, :destroy]
+
 
   require 'payjp'
  
@@ -48,6 +49,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    if @product.destroy!
+      redirect_to root_path, notice: "削除が完了しました"
+    else
+      redirect_to action: :show
+    end
   end
 
   def get_category_children
@@ -92,7 +98,7 @@ class ProductsController < ApplicationController
     :customer => Payjp::Customer.retrieve(@card.customer_id), 
     :currency => 'jpy', 
     )
-    @product.save(buyer_id: current_user.id)
+    @product.update(buyer_id: current_user.id)
     session[:product_id] = nil
     redirect_to "/products/done"
     

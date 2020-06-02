@@ -1,12 +1,13 @@
 class CreditCardsController < ApplicationController
   before_action :set_card, only: [:new, :show, :delete]
+  before_action :move_to_login, only: [:new, :pay ]
   require "payjp"
 
   def new
     redirect_to action: "show" if @card.present?
   end
 
-  def pay 
+  def register
     Payjp.api_key = Rails.application.credentials.dig(:payjp_secret_key)
   
     if params['payjp-token'].blank?
@@ -23,7 +24,7 @@ class CreditCardsController < ApplicationController
       if @card.save
         redirect_to action: "show"
       else
-        redirect_to action: "pay"
+        redirect_to action: "register"
       end
     end
   end
@@ -52,6 +53,10 @@ class CreditCardsController < ApplicationController
   private
   def set_card
     @card = CreditCard.find_by(user_id: current_user.id)
+  end
+
+  def move_to_login
+    redirect_to  new_user_session_path unless user_signed_in?
   end
 
 end
