@@ -10,7 +10,7 @@
             %ul.up-image
               %li.slide-image
                 = image_tag (@product.images[0].src.url), class: "image-main-photo"
-                -if @product.buyer_id.present?
+                - if @product.buyer_id.present?
                   .sold-band
                     .sold-band-inner
                       SOLD
@@ -68,24 +68,32 @@
                   %td
                     =@product.arrive_at
           .optionalArea
-            %ul
-              %li.optionalBtn.likeBtn
-                = icon('fa', 'star')
-                お気に入り 0
-            %ul.optional
-              %li.optionalBtn
-                = link_to "#" do
-                  = icon('fa', 'flag')
-                  不適切な商品の通報
-        .edit-deleteBox
-          - if user_signed_in? && current_user.id == @product.user_id
-            = link_to "商品の編集", "/products/:id/edit", class: "submit-btn submit-btn-blue"
-            %p
-              or
-            = link_to "出品を再開する", "", class: "submit-btn submit-btn-blue"
-            = link_to "この商品を削除する", "/products/:id", class: "submit-btn submit-btn-gray"
-          - else
-            =link_to "購入画面に進む", "#", class: "submit-btn submit-btn-blue"
+            - if user_signed_in?
+              -if current_user.id == @product.user_id
+                .DeleteBtn
+                  =link_to "/products/#{params[:id]}", method: "delete", class:"Delete" do
+                    = icon('fa', 'trash-alt')
+                    商品削除
+              - else
+                %ul
+                  %li.optionalBtn.likeBtn
+                    = icon('fa', 'star')
+                    お気に入り 0
+                %ul.optional
+                  %li.optionalBtn
+                    = link_to "#" do
+                      = icon('fa', 'flag')
+                      不適切な商品の通報 
+            - else
+              %ul
+                %li.optionalBtn.likeBtn
+                  = icon('fa', 'star')
+                  お気に入り 0
+              %ul.optional
+                %li.optionalBtn
+                  = link_to "#" do
+                    = icon('fa', 'flag')
+                    不適切な商品の通報
         .commentBox
           .comments
             - if @messages
