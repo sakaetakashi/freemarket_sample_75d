@@ -20,7 +20,7 @@
                   = image_tag image.src.url, class: "image-sub-photo"
           .itemBox__price
             %span
-              = @product.price
+              = "￥#{@product.price}"
             .itemBox__price-detail
               %span
                 (税込み)
@@ -46,6 +46,7 @@
                 %tr
                   %th ブランド
                   %td
+                    = @product.brand
                 %tr
                   %th 商品のサイズ
                   %td
@@ -57,7 +58,6 @@
                   %th 配送料の負担
                   %td 
                     =@product.shipping_fee
-                    送料込み（出品者負担）
                 %tr
                   %th 発送元の地域
                   %td
@@ -69,11 +69,29 @@
                     =@product.arrive_at
           .optionalArea
             - if user_signed_in?
-              -if current_user.id == @product.user_id
-                .DeleteBtn
-                  =link_to "/products/#{params[:id]}", method: "delete", class:"Delete" do
+              -if current_user.id == @product.user_id && @product.buyer_id.blank?
+                .userBtn
+                  =link_to product_path(@product), method: "delete", class:"userBtn__delete" do
                     = icon('fa', 'trash-alt')
                     商品削除
+                .userBtn
+                  =link_to edit_product_path(@product), class:"userBtn__edit" do
+                    = icon('fas', 'pen')
+                    編集
+              - elsif current_user.id != @product.user_id && @product.buyer_id.blank?
+                %ul
+                  %li.optionalBtn.likeBtn
+                    = icon('fa', 'star')
+                    お気に入り 0
+                %ul
+                  %li.buyBtn
+                    = link_to "/products/purchase/#{@product.id}" do
+                      購入画面に進む
+                %ul.optional
+                  %li.optionalBtn
+                    = link_to "#" do
+                      = icon('fa', 'flag')
+                      不適切な商品の通報 
               - else
                 %ul
                   %li.optionalBtn.likeBtn
@@ -83,7 +101,7 @@
                   %li.optionalBtn
                     = link_to "#" do
                       = icon('fa', 'flag')
-                      不適切な商品の通報 
+                      不適切な商品の通報
             - else
               %ul
                 %li.optionalBtn.likeBtn
@@ -118,3 +136,4 @@
         = link_to "ベビー・キッズをもっと見る", "#"
 = render partial: "appbanner"
 = render partial: "footer"
+= render partial: "purchasebtn"

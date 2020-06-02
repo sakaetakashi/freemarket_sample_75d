@@ -701,6 +701,17 @@
                 color: #3ccace;
                 border: 1px solid #ffb340;
               }
+              .buyBtn {
+                margin-right: auto;
+                padding: 6px 30px;
+                border-radius: 40px;
+                background-color: red;
+                > a{
+                  text-decoration: none;
+                  color: white;
+                }
+
+              }
             }
             .optional {
               .optionalBtn {
@@ -715,16 +726,24 @@
               }
             }
           }
-          .DeleteBtn {
-            margin: 0 auto;
-            .Delete {
-              margin: 0 auto;
+          .userBtn {
+            margin-top: 20px;
+            > a{
+              border: 1px solid #272727;
               border: 1px solid #272727;
               border-radius: 40px;
-              color: #333;
               font-size: 16px;
-              padding: 6px 10px;
+              padding: 20px 70px;
               text-decoration: none;
+              cursor: pointer;
+            }
+            &__delete {
+              background-color: red;
+              color: white;
+            }
+            &__edit {
+              background-color: #3ccace;
+              color: white;
             }
           }
         }
