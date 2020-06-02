@@ -4,7 +4,7 @@
     %nav.bread-crumbs
       %ul.mypage-top-tabs
         %li
-          = link_to "FURIMA", "#", class:"mypage-top-tab"
+          = link_to "FURIMA", "/", class:"mypage-top-tab"
         %li
           %span →マイページ
     %main.l-container.clearfix
@@ -16,7 +16,7 @@
             %li
               = link_to "プロフィール", "#", class:"mypage-nav-list-item"
             %li
-              = link_to "商品を出品する", "#", class:"mypage-nav-list-item"
+              = link_to "商品を出品する", "new_product", class:"mypage-nav-list-item"
             %li
               = link_to "商品を購入する", "#", class:"mypage-nav-list-item"
             %li
@@ -28,14 +28,15 @@
             %li
               = link_to "ログアウト", destroy_user_session_path,method: :delete, class:"mypage-nav-list-item"
       .l-content
-        %ul.mypage-top-tabs
-          %li.mypage-nav-info
-            = link_to "購入した商品", "#", class:"mypage-nav-list-item"
-          %li.mypage-nav-info
-            = link_to "コメント", "#", class:"mypage-nav-list-item"
-          %li.mypage-nav-info
-            = link_to "質問", "#", class:"mypage-nav-list-item"
-          %li.mypage-nav-info
-            = link_to "お知らせ", "#", class:"mypage-nav-list-item"
+        %h1
+          購入した商品
+        .l-content-box
+          - @products.each do |product|
+            = link_to "#" do
+              .bought-item
+                .bought-item__name
+                  = product.product_name
+                .bought-item__img
+                  = image_tag (product.images[0].src.url)
 = render partial: "products/footer"
 = render partial: "products/purchasebtn"
