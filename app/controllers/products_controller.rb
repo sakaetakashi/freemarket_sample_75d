@@ -1,8 +1,10 @@
 class ProductsController < ApplicationController
 
-  before_action :set_product, only:[:show, :purchase, :pay]
+  before_action :set_product, only:[:show, :purchase, :pay, :destroy]
   before_action :set_card, only:[:purchase, :pay]
-  before_action :move_to_login, only: [:purchase, :new, :edit, :destroy]
+  before_action :move_to_index_if_not_seller, only: [:edit]
+  before_action :move_to_login, only: [:purchase, :new, :destroy]
+
 
   require 'payjp'
  
@@ -33,8 +35,8 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    if @product.update(product_params)
-      redirect_to root_path
+    if @product.update(update_params)
+      redirect_to root_path, notice: '更新されました'
     else
       render :edit
     end
@@ -49,6 +51,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    if @product.destroy!
+      redirect_to root_path, notice: "削除が完了しました"
+    else
+      redirect_to action: :show
+    end
   end
 
   def get_category_children
@@ -106,6 +113,10 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:buyer_id, :category_id, :product_name, :explain, :price, :brand, :condition, :arrive_at, :shipping_fee, :region_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
+
+  def update_params
+    params.require(:product).permit(:buyer_id, :category_id, :product_name, :explain, :price, :brand, :condition, :arrive_at, :shipping_fee, :region_id, images_attributes: [:src, :id])
+  end
   
   def set_product
     @product = Product.find(params[:id])
@@ -119,5 +130,9 @@ class ProductsController < ApplicationController
     redirect_to  new_user_session_path unless user_signed_in?
   end
 
+  def move_to_index_if_not_seller
+    redirect_to root_path unless user_signed_in? && current_user.id == Product.find(params[:id]).user_id
+  end
+ 
 end
 
