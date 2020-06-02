@@ -46,6 +46,7 @@ class ProductsController < ApplicationController
     @grandchild = @product.category
     @child = @grandchild.parent
     @parent = @child.parent
+    @favorite_count = Favorite.where(product_id: @product.id).count
   end
 
   def destroy
