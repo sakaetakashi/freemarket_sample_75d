@@ -21,11 +21,8 @@
       %br
       .d_field
         = f.label :パスワード, class: "d_field__title" 
-        %span.need_user_info="必須"
-        - if @minimum_password_length
-          %em
-            (#{@minimum_password_length} 文字以上)
-          %br
+        %span.need_user_info="(7文字以上) 必須"
+        %br
         = f.password_field :password, autocomplete: "new-password", class: "d_field__box" 
       %br
       .d_field
