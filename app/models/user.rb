@@ -14,8 +14,8 @@ class User < ApplicationRecord
   has_many :products, dependent: :destroy
   has_one :credit_cards, dependent: :destroy
   has_one :address, dependent: :destroy
-  has_many :favorites
-  has_many :products, through: :favorites
+  has_many :favorites, dependent: :destroy
+  has_many :favorites, through: :favorites, source: :product
 
   devise :validatable, password_length: 7..128
 

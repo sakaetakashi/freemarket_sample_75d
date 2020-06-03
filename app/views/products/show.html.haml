@@ -79,21 +79,8 @@
                     = icon('fas', 'pen')
                     編集
               - elsif current_user.id != @product.user_id && @product.buyer_id.blank?
-                %ul
-                  - if Favorite.find_by(user_id: current_user.id, product_id: @product.id)
-                    = link_to("/favorites/#{@product.id}/destroy", method: :post) do
-                      %li.optionalBtn.already
-                        = icon('fa', 'star')
-                        お気に入り済み！
-                        %span
-                          = @favorite_count
-                  -else 
-                    = link_to("/favorites/#{@product.id}/create", method: :post) do
-                      %li.optionalBtn.none
-                        = icon('fa', 'star')
-                        お気に入り
-                        %span
-                          = @favorite_count                
+                %ul#favoriteBtn
+                  = render partial: 'favorites/favorite', locals: { product: @product}
                 %ul
                   %li.buyBtn
                     = link_to "/products/purchase/#{@product.id}" do
