@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :products, dependent: :destroy
   has_one :credit_cards, dependent: :destroy
   has_one :address, dependent: :destroy
+  has_many :messages
 
   devise :validatable, password_length: 7..128
 

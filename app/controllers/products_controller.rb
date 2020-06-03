@@ -46,6 +46,8 @@ class ProductsController < ApplicationController
     @grandchild = @product.category
     @child = @grandchild.parent
     @parent = @child.parent
+    @message = Message.new
+    @messages = @product.messages.includes(:user)
   end
 
   def destroy
