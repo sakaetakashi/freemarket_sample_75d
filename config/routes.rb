@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   root 'products#index'
   resources  :products do
+    resources :favorites , only: [:create, :destroy]
+
     collection do
       get 'purchase/:id', to: 'products#purchase'
       post 'pay/:id', to: 'products#pay'
@@ -19,8 +21,7 @@ Rails.application.routes.draw do
     resources  :messages, only: :create
   end
 
-  post "favorites/:product_id/create" => "favorites#create"
-  post "favorites/:product_id/destroy" => "favorites#destroy"
+
   resources :favorites, only: [:index]
 
   resources  :categories
