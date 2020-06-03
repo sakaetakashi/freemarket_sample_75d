@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root 'products#index'
   resources  :products do
-    resources :favorites , only: [:create, :destroy]
+    resources :favorites , only: [:index, :create, :destroy]
 
     collection do
       get 'purchase/:id', to: 'products#purchase'
@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   end
 
 
-  resources :favorites, only: [:index]
 
   resources  :categories
   resources  :images, only: [:new, :show]
