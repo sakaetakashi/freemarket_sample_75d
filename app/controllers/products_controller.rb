@@ -47,6 +47,8 @@ class ProductsController < ApplicationController
     @child = @grandchild.parent
     @parent = @child.parent
     @favorite_count = Favorite.where(product_id: @product.id).count
+    @message = Message.new
+    @messages = @product.messages.includes(:user)
   end
 
   def destroy

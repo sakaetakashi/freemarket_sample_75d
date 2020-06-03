@@ -8,12 +8,6 @@ ja:
         first_name_kana: ふりがな(名前)
         nickname: ニックネーム
         birthday: 誕生日
-        post_code: 郵便番号
-        prefecture: 都道府県
-        city: 市区町村
-        block: 番地
-        building: 建物など
-        telephone_number: 電話番号
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -151,4 +145,4 @@ ja:
       not_locked: は凍結されていません。
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
-        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+        # other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"

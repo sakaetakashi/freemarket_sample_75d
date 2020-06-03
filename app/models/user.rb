@@ -17,6 +17,9 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorites, through: :favorites, source: :product
 
+  has_many :messages
+
+
   devise :validatable, password_length: 7..128
 
   # include JpPrefecture
