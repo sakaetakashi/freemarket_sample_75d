@@ -20,6 +20,10 @@ ja:
         category_id: カテゴリー
         images: 画像 
       address:
+        s_family_name: 送付先/名字
+        s_first_name: 送付先/名前
+        s_family_name_kana: 送付先/ふりがな(名字)
+        s_first_name_kana: 送付先/ふりがな(名前)
         post_code: 郵便番号
         prefecture: 都道府県
         city: 市区町村
