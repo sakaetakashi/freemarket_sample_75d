@@ -7,6 +7,24 @@
     %br
     = form_for @address do |f| 
       = render "devise/shared/error_messages", resource: @address 
+      .d_field_name
+        = f.label :"送付先氏名(全角)", class: "d_field__title" 
+        %span.need_user_info="必須"
+        %br
+        .d_field_name__a
+          = f.text_field :s_family_name, autofocus: true, placeholder: "名字", class: "d_field_name__a__inp" 
+        .d_field_name__b
+          = f.text_field :s_first_name, autofocus: true, placeholder: "名前", class: "d_field_name__b__inp" 
+
+      .d_field_name2
+        = f.label :"送付先氏名・ふりがな(全角)", class: "d_field__title"  
+        %span.need_user_info="必須"
+        %br
+        .d_field_name2__a
+          = f.text_field :s_family_name_kana, autofocus: true, placeholder: "みょうじ", class: "d_field_name2__a__inp" 
+        .d_field_name2__b
+          = f.text_field :s_first_name_kana, autofocus: true, placeholder: "なまえ", class: "d_field_name2__b__inp" 
+
       .d_field
         = f.label :郵便番号, class: "d_field__title" 
         %span.need_user_info="必須"
