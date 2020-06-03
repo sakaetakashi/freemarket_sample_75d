@@ -1,0 +1,19 @@
+.l-side
+  %nav.mypage-nav
+    %ul.mypage-nav-list
+      %li.side-bar
+        = link_to "マイページメニュー", "#", class:"mypage-nav-list-item"
+      %li
+        = link_to "プロフィール", "#", class:"mypage-nav-list-item"
+      %li
+        = link_to "商品を出品する", new_product_path, class:"mypage-nav-list-item"
+      %li
+        = link_to "商品を購入する", "#", class:"mypage-nav-list-item"
+      %li
+        = link_to "お気に入り", favorites_path, class:"mypage-nav-list-item"
+      %li
+        = link_to "クレジットカード登録", credit_card_path(@user), class:"mypage-nav-list-item"
+      %li
+        = link_to "お問い合わせ", "#", class:"mypage-nav-list-item"
+      %li
+        = link_to "ログアウト", destroy_user_session_path,method: :delete, class:"mypage-nav-list-item"

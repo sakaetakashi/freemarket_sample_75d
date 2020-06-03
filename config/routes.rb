@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   post "favorites/:product_id/create" => "favorites#create"
   post "favorites/:product_id/destroy" => "favorites#destroy"
+  resources :favorites, only: [:index]
 
   resources  :categories
   resources  :images, only: [:new, :show]

@@ -1,5 +1,10 @@
 class FavoritesController < ApplicationController
-  before_action :set_product
+  before_action :set_product, only: [:create, :destroy]
+
+  def index
+    @user = current_user
+    @favorites = Favorite.where(user_id: @user.id).all
+  end
 
   def create
     @favorite = Favorite.new(

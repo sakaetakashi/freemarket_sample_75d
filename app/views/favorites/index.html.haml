@@ -1,0 +1,24 @@
+
+= render partial: "products/header"
+.favorites-content
+  .favorites-content__inner
+    = render partial: "users/sidebar"
+    .favorites-box
+      %h1
+        お気に入り一覧
+      %ul
+        - @favorites.each do |favorite|
+          %li
+            = link_to "#" do
+              .item-image
+                = image_tag (favorite.product.images[0].src.url)
+              .item-body
+                .item-name
+                  = favorite.product.product_name
+                .item-price
+                  = "￥#{favorite.product.price}"
+          
+
+= render partial: "products/footer"
+= render partial: "products/purchasebtn"
+
