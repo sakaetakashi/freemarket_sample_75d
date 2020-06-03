@@ -30,7 +30,7 @@
       display: flex;
       .l-side {
         float: left;
-        width: 280px;
+        width: 350px;
         margin: 0 40px 0 0;
         background-color: white;
         .mypage-nav-list {
@@ -54,7 +54,7 @@
       }
       .l-content {
         font-size: 25px;
-        width: 100vw;
+        width: calc(100vw - 350px);
         h1 {
           text-align: center;
         }
@@ -67,7 +67,6 @@
             text-decoration: none;
             font-size: 20px;
             margin-right: 20px;
-            background-color: red;
             margin-top: 20px;
             .bought-item {
               background-color: #f8f8f8;
