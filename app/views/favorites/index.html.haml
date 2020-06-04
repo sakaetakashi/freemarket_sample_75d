@@ -2,15 +2,33 @@
 = render partial: "products/header"
 .favorites-content
   .favorites-content__inner
-    = render partial: "users/sidebar"
+    .l-side
+      %nav.mypage-nav
+        %ul.mypage-nav-list
+          %li.side-bar
+            = link_to "マイページメニュー", "#", class:"mypage-nav-list-item"
+          %li
+            = link_to "プロフィール", "#", class:"mypage-nav-list-item"
+          %li
+            = link_to "商品を出品する", new_product_path, class:"mypage-nav-list-item"
+          %li
+            = link_to "商品を購入する", "#", class:"mypage-nav-list-item"
+          %li
+            = link_to "お気に入り", product_favorites_path(params[:product_id]), class:"mypage-nav-list-item"
+          %li
+            = link_to "クレジットカード登録", credit_card_path(current_user.id), class:"mypage-nav-list-item"
+          %li
+            = link_to "お問い合わせ", "#", class:"mypage-nav-list-item"
+          %li
+            = link_to "ログアウト", destroy_user_session_path,method: :delete, class:"mypage-nav-list-item"
     .favorites-box
       %h1
         お気に入り一覧
       - if @favorites.present?
         %ul
           - @favorites.each do |favorite|
-            %li
-              = link_to product_path(favorite.product.id) do
+            = link_to product_path(favorite.product.id) do
+              %li
                 .item-image
                   = image_tag (favorite.product.images[0].src.url)
                 .item-body
@@ -18,6 +36,8 @@
                     = favorite.product.product_name
                   .item-price
                     = "￥#{favorite.product.price}"
+                .arrow
+                  = icon('fas', 'arrow-circle-right')
       - else 
         %h1
           お気に入りに追加した商品はありません

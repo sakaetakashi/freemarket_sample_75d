@@ -107,6 +107,10 @@ class ProductsController < ApplicationController
     
   end
 
+  def search
+    @products = Product.search(params[:keyword])
+  end
+
   def done
   end
 
@@ -134,6 +138,8 @@ class ProductsController < ApplicationController
   def move_to_index_if_not_seller
     redirect_to root_path unless user_signed_in? && current_user.id == Product.find(params[:id]).user_id
   end
+  
+
  
 end
 
