@@ -56,9 +56,8 @@
       %br
       .d_field
         = f.label :電話番号, class: "d_field__title" 
-        %span.need_user_info="必須"
         %br
-        = f.telephone_field :telephone_number, autofocus: true, maxlength:11, placeholder: "半角数字 ハイフンなし", class: "d_field__box"  
+        = f.telephone_field :telephone_number, autofocus: true, minlength:10, maxlength:11, placeholder: "半角数字 ハイフンなし", class: "d_field__box"  
       %br
       .regi_actions
         = f.submit "登録", class: "regi_actions__btn" 
