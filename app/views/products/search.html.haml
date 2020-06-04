@@ -9,8 +9,8 @@
       - if @products.present?
         %ul
           - @products.each do |product|
-            %li
-              = link_to product_path(product.id) do
+            = link_to product_path(product.id) do
+              %li
                 .contentImg
                   = image_tag (product.images[0].src.url)
                 .contentBody

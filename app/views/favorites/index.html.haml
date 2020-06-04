@@ -27,8 +27,8 @@
       - if @favorites.present?
         %ul
           - @favorites.each do |favorite|
-            %li
-              = link_to product_path(favorite.product.id) do
+            = link_to product_path(favorite.product.id) do
+              %li
                 .item-image
                   = image_tag (favorite.product.images[0].src.url)
                 .item-body

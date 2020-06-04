@@ -36,13 +36,13 @@
       ul {
         cursor: pointer;
         padding: 20px;
-        li {
-          background-color: #f8f8f8;
-          padding: 10px 0px;
-          height: 60px;
-          a {
-            text-decoration: none;
-            color: black;
+        a {
+          text-decoration: none;
+          color: black;
+          li {
+            background-color: #f8f8f8;
+            padding: 10px 0px;
+            height: 60px;
             .item-image {
               height: 60px;
               width: 60px;
@@ -60,10 +60,10 @@
               float: right;
               line-height: 60px;
             }
-          }
-          &:hover {
-            background-color: #3ccace;
-            opacity: 0.6;
+            &:hover {
+              background-color: #3ccace;
+              opacity: 0.6;
+            }
           }
         }
       }
