@@ -10,6 +10,11 @@ class Product < ApplicationRecord
   has_many :favorites, through: :favorites, source: :user
   has_many :messages
 
+  def self.search(search)
+    return Product.all unless search
+    Product.where('product_name LIKE(?)', "%#{search}%")
+  end
+
 
   validates :user_id, :category_id, :condition, :arrive_at, :shipping_fee, :region_id,  presence: true
   validates :product_name, presence: true, length: { in: 1..40 }

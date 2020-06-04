@@ -1,0 +1,30 @@
+= render partial: "header"
+.searchContents
+  .searchContents__inner
+    .detailSearch
+      検索機能lv２で作成
+    .resultContents
+      %h1
+        検索結果
+      - if @products.present?
+        %ul
+          - @products.each do |product|
+            %li
+              = link_to product_path(product.id) do
+                .contentImg
+                  = image_tag (product.images[0].src.url)
+                .contentBody
+                  .contentName
+                    = product.product_name
+                  .contentPrice
+                    = "￥#{product.price}"
+                .arrow
+                  = icon('fas', 'arrow-circle-right')
+      - else
+        %h1
+          該当する物はありませんでした。       
+
+
+
+= render partial: "footer"
+= render partial: "purchasebtn"

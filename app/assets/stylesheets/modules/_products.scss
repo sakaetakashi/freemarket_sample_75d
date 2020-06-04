@@ -920,3 +920,61 @@
     }
   }
 }
+//検索結果
+.searchContents {
+  background-color: #f8f8f8;
+  &__inner {
+    display: flex;
+    max-width: 1000px;
+    background-color: white;
+    margin: 0 auto;
+    padding: 20px 0px;
+    .detailSearch {
+      width: 200px;
+      height: 500px;
+      background-color: red;
+    }
+    .resultContents {
+      width: calc(100% - 200px);
+      h1 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+      }
+      ul {
+        cursor: pointer;
+        padding: 20px;
+        li {
+          background-color: #f8f8f8;
+          padding: 10px 0px;
+          height: 60px;
+          a {
+            text-decoration: none;
+            color: black;
+            .contentImg {
+              height: 60px;
+              width: 60px;
+              margin-right: 20px;
+              float: left;
+              img {
+                width: 100%;
+                height: 100%;
+              }
+            }
+            .contentBody {
+              float: left;
+            }
+            .arrow {
+              float: right;
+              line-height: 60px;
+            }
+          }
+          &:hover {
+            background-color: #3ccace;
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+  }
+}

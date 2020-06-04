@@ -5,11 +5,11 @@
         = link_to root_path do
           = image_tag asset_path("logo.png")
       .pcHeader__inner__main__searchBox
-        = form_tag "#" do
-          = text_field_tag :keyword,'', class: "searchBox__input",placeholder: "キーワードから探す"
-          %button{type: "submit"}
+        = form_with(url: search_products_path, local: true, method: :get, class: "search-form" ) do |f|
+          = f.text_field :keyword, placeholder: "キーワードから探す", class: "searchBox__input"
+          = button_tag type: :submit do
             .searchBox__icon
-              = image_tag asset_path("icon-search 1.png")
+              = image_tag asset_path("icon-search 1 .png")
     .pcHeader__inner__nav
       %ul.pcHeader__inner__nav__left
         %li.pcHeader__inner__nav__left__item.listLeft__item--first

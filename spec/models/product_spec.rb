@@ -241,4 +241,8 @@ describe Product do
 
   end
 
+  describe '#search' do
+  it ""
+  end
+
 end
