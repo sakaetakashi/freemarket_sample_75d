@@ -1,0 +1,2 @@
+module DetailsearchesHelper
+end

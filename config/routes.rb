@@ -23,8 +23,7 @@ Rails.application.routes.draw do
     resources  :messages, only: :create
   end
 
-
-
+  resources  :detailsearches,only: :index
   resources  :categories
   resources  :images, only: [:new, :show]
   resources  :addresses

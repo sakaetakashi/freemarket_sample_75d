@@ -2,7 +2,52 @@
 .searchContents
   .searchContents__inner
     .detailSearch
-      検索機能lv２で作成
+      = search_form_for(@q, url: search_products_path) do |f|
+        .detailSearch__title
+          %h1
+            商品詳細検索
+        .detailSearch__box
+          .detailSearch__box--label
+            = icon('fas', 'search')
+            %p
+              キーワードを入力
+          = f.search_field :product_name_cont, placeholder: "キーワードを入力"
+
+        .detailSearch__box
+          .detailSearch__box--label
+            = icon('fas', 'search')
+            %p
+              価格
+          .detailSearch__box--forms
+            = f.search_field :price_gteq, placeholder: "¥ 上限"
+            %p ~
+            = f.search_field :price_lteq, placeholder: "¥ 下限"
+
+        .detailSearch__box
+          .detailSearch__box--label
+            = icon('fas', 'search')
+            %p
+              ブランドで検索
+          = f.search_field :brand_cont, placeholder: "ブランドを入力"
+
+
+        .detailSearch__box
+          .detailSearch__box--label
+            = icon('fas', 'search')
+            %p
+              商品の状態で検索
+          = f.radio_button :condition_eq, '', {:checked => true}
+          指定なし
+          = f.radio_button :condition_eq, '傷あり'
+          傷あり
+          = f.radio_button :condition_eq, '目立たない傷あり'
+          目立たない傷あり
+          = f.radio_button :condition_eq, '傷なし'
+          傷なし
+          = f.radio_button :condition_eq, '未開封・新品'
+          未開封・新品
+
+
     .resultContents
       %h1
         検索結果
