@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   end
 
   root 'products#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources  :products do
+    resources :favorites , only: [:index, :create, :destroy]
+
     collection do
       get 'purchase/:id', to: 'products#purchase'
       post 'pay/:id', to: 'products#pay'
@@ -19,6 +20,9 @@ Rails.application.routes.draw do
     end
     resources  :messages, only: :create
   end
+
+
+
   resources  :categories
   resources  :images, only: [:new, :show]
   resources  :addresses

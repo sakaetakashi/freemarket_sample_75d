@@ -25,6 +25,7 @@
                     = number_to_currency(product.price)
                   %li
                     = icon('fas','star')
-                    0
+                    %span
+                      = Favorite.where(product_id: product.id).count
                 %p
                 (税込み)

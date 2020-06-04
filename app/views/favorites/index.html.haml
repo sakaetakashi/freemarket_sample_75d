@@ -1,0 +1,28 @@
+
+= render partial: "products/header"
+.favorites-content
+  .favorites-content__inner
+    = render partial: "users/sidebar"
+    .favorites-box
+      %h1
+        お気に入り一覧
+      - if @favorites.present?
+        %ul
+          - @favorites.each do |favorite|
+            %li
+              = link_to product_path(favorite.product.id) do
+                .item-image
+                  = image_tag (favorite.product.images[0].src.url)
+                .item-body
+                  .item-name
+                    = favorite.product.product_name
+                  .item-price
+                    = "￥#{favorite.product.price}"
+      - else 
+        %h1
+          お気に入りに追加した商品はありません
+          
+
+= render partial: "products/footer"
+= render partial: "products/purchasebtn"
+
