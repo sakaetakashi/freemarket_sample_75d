@@ -8,7 +8,7 @@
       - if @details.present?
         %ul
           - @details.each do |detail|
-            = link_to "#" do
+            = link_to product_path(detail.id) do
               %li
                 .contentImg
                   = image_tag (detail.images[0].src.url)
