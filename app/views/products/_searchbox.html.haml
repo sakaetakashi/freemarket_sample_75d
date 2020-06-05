@@ -1,0 +1,91 @@
+.detailSearch
+  = search_form_for(@q, url: detailsearches_path) do |f|
+    .detailSearch__title
+      %h1
+        商品詳細検索
+    .detailSearch__box
+      .detailSearch__box__label
+        = icon('fas', 'search')
+        %p
+          キーワードを入力
+      = f.search_field :product_name_cont, placeholder: "キーワードを入力", class: "text-box"
+
+    .detailSearch__box
+      .detailSearch__box__label
+        = icon('fas', 'search')
+        %p
+          価格
+      .detailSearch__box__forms
+        = f.search_field :price_gteq, placeholder: "¥ 上限"
+        %h3 ~
+        = f.search_field :price_lteq, placeholder: "¥ 下限"
+
+    .detailSearch__box
+      .detailSearch__box__label
+        = icon('fas', 'search')
+        %p
+          ブランドで検索
+      = f.search_field :brand_cont, placeholder: "ブランドを入力", class: "text-box"
+
+
+    .detailSearch__box
+      .detailSearch__box__label
+        = icon('fas', 'search')
+        %p
+          商品の状態で検索
+      .detailSearch__box__checkboxs
+        .detailSearch__box__checkboxs__checkbox
+          = f.radio_button :condition_eq, '', {:checked => true}
+          指定なし
+        .detailSearch__box__checkboxs__checkbox
+          = f.radio_button :condition_eq, '傷あり'
+          傷あり
+        .detailSearch__box__checkboxs__checkbox
+          = f.radio_button :condition_eq, '目立たない傷あり'
+          目立たない傷あり
+        .detailSearch__box__checkboxs__checkbox
+          = f.radio_button :condition_eq, '傷なし'
+          傷なし
+        .detailSearch__box__checkboxs__checkbox
+          = f.radio_button :condition_eq, '未開封・新品'
+          未開封・新品
+
+    .detailSearch__box
+      .detailSearch__box__label
+        = icon('fas', 'search')
+        %p
+          発送料金で検索
+      .detailSearch__box__checkboxs
+        .detailSearch__box__checkboxs__checkbox
+          = f.radio_button :shipping_fee_eq, '', {:checked => true}
+          指定なし
+        .detailSearch__box__checkboxs__checkbox
+          = f.radio_button :shipping_fee_eq, '購入者負担(着払い)'
+          購入者負担(着払い)
+        .detailSearch__box__checkboxs__checkbox
+          = f.radio_button :shipping_fee_eq, '出品者負担(元払い)'
+          出品者負担(元払い)
+
+    .detailSearch__box
+      .detailSearch__box__label
+        = icon('fas', 'search')
+        %p
+          発送までの日数で検索
+      .detailSearch__box__checkboxs
+        .detailSearch__box__checkboxs__checkbox
+          = f.radio_button :arrive_at_eq, '', {:checked => true}
+          指定なし
+        .detailSearch__box__checkboxs__checkbox
+          = f.radio_button :arrive_at_eq, '1〜２日で発送'
+          1〜２日で発送
+        .detailSearch__box__checkboxs__checkbox
+          = f.radio_button :arrive_at_eq, '2〜3日で発送'
+          2〜3日で発送
+        .detailSearch__box__checkboxs__checkbox
+          = f.radio_button :arrive_at_eq, '3〜4日で発送'
+          3〜4日で発送
+    
+    .detailSearch__btn
+      .detailSearch__btn__clear
+        = link_to "クリア", search_products_path, type: "button"
+      = f.submit "検索"
