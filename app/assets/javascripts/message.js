@@ -1,6 +1,6 @@
 $(function(){
   function buildHTML(message) {
-    var html = `<div class="one-message">
+    var html = `<div class="one-message" data-message-id=${message.id}>
                   <div class="message-userName">
                     ${message.user_nickname}
                   </div>
@@ -11,6 +11,30 @@ $(function(){
                   </div>
                 </div>`
       return html;
+  }
+
+  var reloadMessages = function() {
+    var last_message_id = $('.one-message:last').data("message-id");
+    let product_id = $(".commentBox").attr("id")
+    $.ajax({
+      url: `${product_id}/api/messages`, 
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages){
+      if (messages.length !== 0) {
+      var insertHTML = '';
+      $.each(messages, function(i, message) {
+        insertHTML += buildHTML(message)
+      })
+      $('.comments').append(insertHTML);
+      $('.comments').animate({ scrollTop: $('.comments')[0].scrollHeight});
+    }
+    })
+    .fail(function() {
+      alert('errors');
+    });
   }
 
   $('#new_message').on('submit', function(e){
@@ -35,4 +59,7 @@ $(function(){
       alert('error');
     })
   })
+  if (document.location.href.match(/\/products\/\d+/)) {
+    setInterval(reloadMessages, 7000);
+  }
 })

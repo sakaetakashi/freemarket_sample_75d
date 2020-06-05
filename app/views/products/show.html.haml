@@ -106,11 +106,11 @@
                   = link_to "#" do
                     = icon('fa', 'flag')
                     不適切な商品の通報
-        .commentBox
+        .commentBox{id: @product.id}
           .comments
             - if @messages
               - @messages.each do |message|
-                .one-message
+                .one-message{data: {message: { id: message.id }}}
                   .message-userName
                     = message.user.nickname
                   .speech-bubble
