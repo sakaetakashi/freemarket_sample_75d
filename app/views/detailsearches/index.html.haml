@@ -1,0 +1,26 @@
+= render partial: "products/header"
+.searchContents
+  .searchContents__inner
+    = render partial: "products/searchbox"
+    .resultContents
+      %h1
+        検索結果
+      - if @details.present?
+        %ul
+          - @details.each do |detail|
+            = link_to product_path(detail.id) do
+              %li
+                .contentImg
+                  = image_tag (detail.images[0].src.url)
+                .contentBody
+                  .contentName
+                    = detail.product_name
+                  .contentPrice
+                    = "￥#{detail.price}"
+                .arrow
+                  = icon('fas', 'arrow-circle-right')
+      - else 
+        %h1
+          検索結果はありません
+= render partial: "products/footer"
+= render partial: "products/purchasebtn"

@@ -1,8 +1,7 @@
 = render partial: "header"
 .searchContents
   .searchContents__inner
-    .detailSearch
-      検索機能lv２で作成
+    = render partial: "searchbox"
     .resultContents
       %h1
         検索結果
@@ -23,8 +22,5 @@
       - else
         %h1
           該当する物はありませんでした。       
-
-
-
 = render partial: "footer"
 = render partial: "purchasebtn"
