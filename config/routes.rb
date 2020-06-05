@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources  :detailsearches,only: :index
-  resources  :categories
+  resources  :categories, only: :index
   resources  :images, only: [:new, :show]
   resources  :addresses
   resources  :users, only: [:edit, :update, :show]
