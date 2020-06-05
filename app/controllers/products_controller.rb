@@ -110,6 +110,10 @@ class ProductsController < ApplicationController
   def search
     @products = Product.search(params[:keyword])
     @q = Product.ransack(params[:q])
+  end
+
+  def detailsearch
+    @q = Product.ransack(params[:q])
     @details = @q.result(distinct: true)
   end
 

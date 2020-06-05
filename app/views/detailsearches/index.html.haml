@@ -1,0 +1,17 @@
+- if @details.present?
+  %ul
+    - @details.each do |detail|
+      = link_to "#" do
+        %li
+          .contentImg
+            = image_tag (detail.images[0].src.url)
+          .contentBody
+            .contentName
+              = detail.product_name
+            .contentPrice
+              = "￥#{detail.price}"
+          .arrow
+            = icon('fas', 'arrow-circle-right')
+- else 
+  %h1
+    検索結果はありません
