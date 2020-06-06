@@ -106,19 +106,19 @@
                   = link_to "#" do
                     = icon('fa', 'flag')
                     不適切な商品の通報
-        .commentBox
+        .commentBox{id: @product.id}
           .comments
             - if @messages
               - @messages.each do |message|
-                .one-message
+                .one-message{data: {message: { id: message.id }}}
                   .message-userName
-                    = link_to message.user.nickname, "/users/#{message.user_id}",  class: "user-link"
+                    = message.user.nickname
                   .speech-bubble
                     .message-text
                       = message.text
           - if current_user
-            = form_with(model: [@product, @message], local: true) do |f|
-              = f.text_area :text, placeholder: "コメントを入力する", rows: "2"
+            = form_with(model: [@product, @message], local: true, id: "new_message") do |f|
+              = f.text_area :text, placeholder: "コメントを入力する", rows: "2", class: "textarea"
               %p.noticeMsg
                 相手のことを考え丁寧なコメントを心がけましょう。
                 %br
@@ -129,7 +129,7 @@
                     %p
                       売り切れのためコメントできません
                 - else
-                  %button{type: "submit"}
+                  = button_tag type: :submit , class: "form__submit" do
                     = icon('fa', 'comment')
                     コメントする
           - else

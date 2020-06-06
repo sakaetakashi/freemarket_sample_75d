@@ -1,12 +1,12 @@
 class MessagesController < ApplicationController
 
   def create
-    @message = Message.new(message_params)
-    if @message.save
-      redirect_to product_path(params[:product_id]), notice: 'コメントしました'
-    else
-      render :new
+    @message = Message.create(message_params)
+    respond_to do |format|
+      format.html { redirect_to product_path(params[:message_id])}
+      format.json
     end
+
   end
 
   private
