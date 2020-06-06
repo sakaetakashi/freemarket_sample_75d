@@ -1,0 +1,15 @@
+= render partial: "products/header"
+.show-main
+  .show-main__inner
+    .contents
+      .showTitle
+        %h1
+          = "#{@parent.name}の商品一覧"
+      %ul
+        - @parent.children.each do |child|
+          %li
+            = link_to child.name, subcategory_category_path(child.id)
+          
+= render partial: "products/appbanner"
+= render partial: "products/footer"
+= render partial: "products/purchasebtn"

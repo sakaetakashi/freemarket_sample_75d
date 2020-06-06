@@ -1,0 +1,21 @@
+= render partial: "products/header"
+.category-main
+  .category-main__inner
+    .parent-category
+      - @parents.each do |parent|
+        .parent-category__item
+          = link_to parent.name, categories_path(anchor: "#{parent.id}") 
+    - @parents.each do |parent|
+      .titleBox{id: parent.id}
+        = link_to parent.name, category_path(parent.id), class: "parentName"
+        .childrenBox
+          - parent.children.each do |child|
+            .childrenBox__title
+              = link_to child.name, subcategory_category_path(child.id)
+            .childrenBox__items
+              - child.children.each do |grandchild|
+                .childrenBox__items__item
+                  = link_to grandchild.name, item_category_path(grandchild.id)
+= render partial: "products/appbanner"
+= render partial: "products/footer"
+= render partial: "products/purchasebtn"
