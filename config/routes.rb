@@ -24,7 +24,12 @@ Rails.application.routes.draw do
   end
 
   resources  :detailsearches,only: :index
-  resources  :categories, only: :index
+  resources  :categories, only: [:index, :show] do
+    collection do
+      get 'subcategories/:id', to: 'categories#subcategory'
+      get 'items/:id', to: 'categories#item'
+    end
+  end
   resources  :images, only: [:new, :show]
   resources  :addresses
   resources  :users, only: [:edit, :update, :show]

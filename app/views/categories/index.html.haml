@@ -4,18 +4,18 @@
     .parent-category
       - @parents.each do |parent|
         .parent-category__item
-          = link_to parent.name , "#"
+          = link_to parent.name, categories_path(anchor: "#{parent.id}") 
     - @parents.each do |parent|
-      .titleBox
-        = link_to parent.name, "#", class: "parentName"
+      .titleBox{id: parent.id}
+        = link_to parent.name, category_path(parent.id), class: "parentName"
         .childrenBox
           - parent.children.each do |child|
             .childrenBox__title
-              = link_to child.name, "#"
+              = link_to child.name, "/categories/subcategories/#{child.id}"
             .childrenBox__items
               - child.children.each do |grandchild|
                 .childrenBox__items__item
-                  = link_to grandchild.name, "#"
+                  = link_to grandchild.name, "/categories/items/#{grandchild.id}"
 = render partial: "products/appbanner"
 = render partial: "products/footer"
 = render partial: "products/purchasebtn"
