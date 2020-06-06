@@ -1,0 +1,13 @@
+.breadcrumbs {
+  padding: 0px 200px;
+  .breadcrumbs-list {
+    > a {
+      text-decoration: none;
+      color: black;
+      margin-right: 5px;
+      &:hover {
+        color: #3CCACE;
+      }
+    }
+  }
+}
