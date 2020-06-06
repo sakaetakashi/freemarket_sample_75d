@@ -25,9 +25,9 @@ Rails.application.routes.draw do
 
   resources  :detailsearches,only: :index
   resources  :categories, only: [:index, :show] do
-    collection do
-      get 'subcategories/:id', to: 'categories#subcategory'
-      get 'items/:id', to: 'categories#item'
+    member do
+      get 'subcategory'
+      get 'item'
     end
   end
   resources  :images, only: [:new, :show]
