@@ -13,20 +13,20 @@
     .pcHeader__inner__nav
       %ul.pcHeader__inner__nav__left
         %li.pcHeader__inner__nav__left__item.listLeft__item--first
-          = link_to "カテゴリー", "#", id: "catBtn"
+          = link_to "カテゴリー", categories_path, id: "catBtn"
           .tree
             - @navi_parents.each do |parent|
               %ul.categoryTree
                 %li.categoryTree__item
-                  = link_to parent.name , "#", id: "#{parent.id}"
+                  = link_to parent.name , category_path(parent.id), id: "#{parent.id}"
                   %ul.childrenTree
                     - Category.where(ancestry: parent.id).each do |child|
                       %li.childrenTree__item
-                        = link_to child.name, "#", id: "#{child.id}"
+                        = link_to child.name, subcategory_category_path(child.id)
                         %ul.grandchildrenTree
                           - child.children.each do |grandchild|
                             %li.grandchildrenTree__item
-                              = link_to grandchild.name, "#"
+                              = link_to grandchild.name, item_category_path(grandchild.id)
   
         %li.pcHeader__inner__nav__left__item
           = link_to "ブランド", "#", id: "brandBtn"

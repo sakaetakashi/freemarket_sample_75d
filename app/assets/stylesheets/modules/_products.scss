@@ -166,7 +166,9 @@
                 width: 240px;
                 &:hover {
                   background-color: #3CCACE;
-                  color: black;
+                  > a {
+                    color: white;
+                  }
                   .childrenTree {
                     &__item {
                       display: block;
@@ -195,6 +197,9 @@
                   height: 40px;
                   &:hover {
                     background-color: #3CCACE;
+                    > a {
+                      color: white;
+                    }
                     .grandchildrenTree {
                       &__item {
                         display: block;
