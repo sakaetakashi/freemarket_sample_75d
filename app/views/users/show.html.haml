@@ -1,12 +1,8 @@
 = render partial: "products/header"
-%body.user-mein-body
+- breadcrumb :mypage
+= render "layouts/breadcrumbs"
+.user-mein-body
   .default-container
-    %nav.bread-crumbs
-      %ul.mypage-top-tabs
-        %li
-          = link_to "FURIMA", "/", class:"mypage-top-tab"
-        %li
-          %span →マイページ
     %main.l-container.clearfix
       .l-side
         %nav.mypage-nav

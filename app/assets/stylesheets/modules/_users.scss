@@ -2,29 +2,9 @@
   background-color: #f8f8f8;
   .default-container {
     background-color: #f8f8f8;
-    .bread-crumbs {
-      position: relative;
-      border-top: 1px solid #eee;
-      background: #f5f5f5;
-      -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
-      box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
-      background: #fff;
-      z-index: 1;
-      .mypage-top-tabs {
-        color: black;
-        font-size: 18px;
-        display: flex;
-        height: 42px;
-        background-color: white;
-        padding: 16px 0 0 40px;
-        .mypage-top-tab {
-          text-decoration: none;
-          color: black;
-        }
-      }
-    }
     .l-container.clearfix {
-      margin: 40px auto 0;
+      margin: 0 auto ;
+      padding: 40px 0px;
       width: 1020px;
       background-color: white;
       display: flex;
