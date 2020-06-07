@@ -90,3 +90,8 @@ crumb :exhibition do
   link "商品出品"
   parent :root
 end
+
+crumb :edit_product do
+  link "商品編集"
+  parent :root
+end

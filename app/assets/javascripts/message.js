@@ -56,10 +56,10 @@ $(function(){
       $('.form__submit').prop('disabled', false);
     })
     .fail(function(){
-      alert('error');
+      alert('エラー');
     })
   })
-  if (document.location.href.match(/\/products\/\d+/)) {
+  if (document.location.href.match(/\/products\/\d+$/)) {
     setInterval(reloadMessages, 7000);
-  }
+  } 
 })
