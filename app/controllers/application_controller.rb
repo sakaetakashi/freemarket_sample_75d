@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :navi_category
 
   private
   def basic_auth
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
 
   def production?
     Rails.env.production?
+  end
+
+  def navi_category
+    @navi_parents = Category.where(ancestry: nil)
   end
 
   protected

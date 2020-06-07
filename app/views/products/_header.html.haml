@@ -14,34 +14,20 @@
       %ul.pcHeader__inner__nav__left
         %li.pcHeader__inner__nav__left__item.listLeft__item--first
           = link_to "カテゴリー", "#", id: "catBtn"
-          .tree.displayNone
-            %ul.categoryTree
-              %li.categoryTree__item
-                = link_to "レディース", "#", id: "1"
-              %li.categoryTree__item
-                = link_to "メンズ", "#", id: "2"
-              %li.categoryTree__item
-                = link_to "ベビー・キッズ", "#", id: "3"
-              %li.categoryTree__item
-                = link_to "インテリア・住まい・小物", "#", id: "4"
-              %li.categoryTree__item
-                = link_to "ベビー・キッズ", "#", id: "5"
-              %li.categoryTree__item
-                = link_to "おもちゃ・ホビー・グッズ", "#", id: "6"
-              %li.categoryTree__item
-                = link_to "コスメ・香水・美容", "#", id: "7"
-              %li.categoryTree__item
-                = link_to "家電・スマホ・カメラ", "#", id: "8"
-              %li.categoryTree__item
-                = link_to "スポーツ・レジャー", "#", id: "9"
-              %li.categoryTree__item
-                = link_to "ハンドメイド", "#", id: "10"
-              %li.categoryTree__item
-                = link_to "チケット", "#", id: "11"
-              %li.categoryTree__item
-                = link_to "自動車・オートバイ", "#", id: "12"
-              %li.categoryTree__item
-                = link_to "その他", "#", id: "13"
+          .tree
+            - @navi_parents.each do |parent|
+              %ul.categoryTree
+                %li.categoryTree__item
+                  = link_to parent.name , "#", id: "#{parent.id}"
+                  %ul.childrenTree
+                    - Category.where(ancestry: parent.id).each do |child|
+                      %li.childrenTree__item
+                        = link_to child.name, "#", id: "#{child.id}"
+                        %ul.grandchildrenTree
+                          - child.children.each do |grandchild|
+                            %li.grandchildrenTree__item
+                              = link_to grandchild.name, "#"
+  
         %li.pcHeader__inner__nav__left__item
           = link_to "ブランド", "#", id: "brandBtn"
       %ul.pcHeader__inner__nav__right

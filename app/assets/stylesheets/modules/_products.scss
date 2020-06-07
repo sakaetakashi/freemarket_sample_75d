@@ -125,14 +125,22 @@
       .listLeft__item--first {
         text-decoration: none;
         padding: 0;
+        &:hover {
+          .categoryTree {
+            &__item {
+              display: block;
+            }
+          }
+        }
       }
       &__left {
         position: relative;
         display: flex;
         &__item {
+          display: block;
           display: flex;
           line-height: 38px;
-          padding: 0 0 0 16px;
+          height: 40px;
           > a {
             text-decoration: none;
             color: black;
@@ -141,9 +149,6 @@
             background-repeat: no-repeat;
             background-size: 18px;
             padding-right: 30px;
-          }
-          .displayNone {
-            display: none;
           }
           .tree {
             z-index: 2;
@@ -155,26 +160,78 @@
               background-color: #fff;
               display: flex;
               flex-direction: column;
-              position: relative;
               &__item {
+                height: 40px;
+                display: none;
+                width: 240px;
+                &:hover {
+                  background-color: #3CCACE;
+                  color: black;
+                  .childrenTree {
+                    &__item {
+                      display: block;
+                    }
+                  }
+                }
                 > a {
-                  line-height: 40px;
                   display: block;
-                  width: 240px;
-                  padding: 3px 8px 3px 5px;
+                  color: black;
+                  text-decoration: none;
+                  line-height: 40px;
+                  display: block; 
                   border-bottom: 1px solid #f8f8f8;
                 }
               }
-              li {
-                position: relative;
-                > a {
-                  color: #333;
-                  text-decoration: none;
-                  line-height: 32px;
-                  background-position: center right;
-                  background-repeat: no-repeat;
-                  background-size: 18px;
-                  padding-right: 30px;
+              .childrenTree {
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 0;
+                left: 240px;
+                &__item {
+                  display: none;
+                  width: 240px;
+                  height: 40px;
+                  &:hover {
+                    background-color: #3CCACE;
+                    .grandchildrenTree {
+                      &__item {
+                        display: block;
+                      }
+                    }
+                  }
+                  > a {
+                    color: black;
+                    text-decoration: none;
+                    line-height: 40px;
+                    display: block;
+                    border-bottom: 1px solid #f8f8f8;
+                  }
+                }
+                .grandchildrenTree {
+                  background-color: white;
+                  display: flex;
+                  flex-direction: column;
+                  position: absolute;
+                  top: 0;
+                  left: 240px;
+                  &__item {
+                    display: none;
+                    height: 40px;
+                    width: 240px;
+                    > a {
+                      color: black;
+                      text-decoration: none;
+                      line-height: 40px;
+                      display: block;
+                      border-bottom: 1px solid #f8f8f8;
+                      &:hover {
+                        background-color: #3CCACE;
+                        color: white;
+                      }
+                    }
+                  }
                 }
               }
             }
