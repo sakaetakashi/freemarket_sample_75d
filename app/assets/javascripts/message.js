@@ -59,7 +59,7 @@ $(function(){
       alert('エラー');
     })
   })
-  if (document.location.href.match(/\/products\/\d+$/)) {
-    setInterval(reloadMessages, 7000);
-  } 
+  // if (document.location.href.match(/\/products\/\d+$/)) {
+  //   setInterval(reloadMessages, 7000);
+  // } 
 })

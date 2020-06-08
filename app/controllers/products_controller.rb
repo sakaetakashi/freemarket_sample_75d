@@ -48,13 +48,18 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    if @product.destroy!
+    
+    if @product.destroy
+      @favorite = Favorite.where(product_id: params[:id])
+      @favorite.each do |favorite|
+        favorite.delete
+      end
       redirect_to root_path, notice: "削除が完了しました"
     else
       redirect_to action: :show
     end
   end
-
+  
   def get_category_children
     @category_children = Category.find(params[:category_id]).children
   end
