@@ -7,9 +7,9 @@
     .parent-category
       - @parents.each do |parent|
         .parent-category__item
-          = link_to parent.name, categories_path(anchor: "#{parent.id}") 
+          = link_to parent.name, categories_path(anchor: "#{parent.name}") 
     - @parents.each do |parent|
-      .titleBox{id: parent.id}
+      .titleBox{id: parent.name}
         = link_to parent.name, category_path(parent.id), class: "parentName"
         .childrenBox
           - parent.children.each do |child|
