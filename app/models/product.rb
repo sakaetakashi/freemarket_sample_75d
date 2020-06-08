@@ -6,9 +6,8 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :user
   belongs_to :buyer, class_name: "User", optional: true
-  has_many :favorites, dependent: :destroy
   has_many :favorites, through: :favorites, source: :user
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   def self.search(search)
     return Product.all unless search
