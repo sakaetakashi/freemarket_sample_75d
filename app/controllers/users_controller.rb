@@ -8,10 +8,4 @@ class UsersController < ApplicationController
   end
 
   
-  # private
-  #   def user_params
-  #     params.require(:address).permit(:post_code, :prefecture, :city, :block, :building)
-  #   end
-
-
 end

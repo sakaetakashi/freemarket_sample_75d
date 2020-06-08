@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_action :set_product, only:[:show, :purchase, :pay, :destroy]
+  before_action :set_product, only:[:edit, :update, :show, :purchase, :pay, :destroy]
   before_action :set_card, only:[:purchase, :pay]
   before_action :move_to_index_if_not_seller, only: [:edit]
   before_action :move_to_login, only: [:purchase, :new, :destroy]
@@ -15,8 +15,6 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
-    @category_parent_array = Category.where(ancestry: nil).pluck(:name) #いらない?
-    @category_parent_array.unshift("---") #いらない?
   end
 
   def create
@@ -30,11 +28,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update(update_params)
       redirect_to root_path, notice: '更新されました'
     else
