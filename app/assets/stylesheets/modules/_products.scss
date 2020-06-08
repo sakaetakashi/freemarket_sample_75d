@@ -1,8 +1,12 @@
+$white: #fff;
+$skyblue: #3ccace;
+$black: #272727;
+
 //フッター
 .footer {
   padding: 60px 0;
-  color: #fff;
-  background-color: #272727;
+  color: $white;
+  background-color: $black;
   text-align: center;
   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic",
     "メイリオ", "Meiryo", sans-serif;
@@ -23,7 +27,7 @@
       ul {
         list-style: none;
         li a {
-          color: #fff;
+          color: $white;
           text-decoration: none;
           font-size: 12px;
           line-height: 32px;
@@ -46,7 +50,7 @@
   }
   .searchBtn {
     width: 120px;
-    background: #3ccace;
+    background: $skyblue;
     text-align: center;
     border-radius: 4%;
     bottom: 32px;
@@ -54,7 +58,7 @@
     position: fixed;
     padding: 15px;
     .searchBtn__text {
-      color: #fff;
+      color: $white;
       display: block;
       font-size: 18px;
       text-decoration: none;
@@ -100,13 +104,13 @@
             height: 36px;
             width: calc(100% - 26px);
             padding: 0 0 0 5px;
-            border: 1px solid black;
+            border: 1px solid $black;
           }
           button {
             width: 36px;
             border: 0;
             cursor: pointer;
-            background-color: #3ccace;
+            background-color: $skyblue;
             padding: 8px;
             .searchBox__icon {
               img {
@@ -143,7 +147,7 @@
           height: 40px;
           > a {
             text-decoration: none;
-            color: black;
+            color: $black;
             line-height: 32px;
             background-position: center right;
             background-repeat: no-repeat;
@@ -153,11 +157,11 @@
           .tree {
             z-index: 2;
             position: absolute;
-            background-color: #fff;
+            background-color: $white;
             width: 240px;
             top: 40px;
             .categoryTree {
-              background-color: #fff;
+              background-color: $white;
               display: flex;
               flex-direction: column;
               &__item {
@@ -165,9 +169,9 @@
                 display: none;
                 width: 240px;
                 &:hover {
-                  background-color: #3CCACE;
+                  background-color: $skyblue;
                   > a {
-                    color: white;
+                    color: $white;
                   }
                   .childrenTree {
                     &__item {
@@ -185,7 +189,7 @@
                 }
               }
               .childrenTree {
-                background-color: white;
+                background-color: $white;
                 display: flex;
                 flex-direction: column;
                 position: absolute;
@@ -196,9 +200,9 @@
                   width: 240px;
                   height: 40px;
                   &:hover {
-                    background-color: #3CCACE;
+                    background-color: $skyblue;
                     > a {
-                      color: white;
+                      color: $white;
                     }
                     .grandchildrenTree {
                       &__item {
@@ -207,7 +211,7 @@
                     }
                   }
                   > a {
-                    color: black;
+                    color: $black;
                     text-decoration: none;
                     line-height: 40px;
                     display: block;
@@ -215,7 +219,7 @@
                   }
                 }
                 .grandchildrenTree {
-                  background-color: white;
+                  background-color: $white;
                   display: flex;
                   flex-direction: column;
                   position: absolute;
@@ -232,8 +236,8 @@
                       display: block;
                       border-bottom: 1px solid #f8f8f8;
                       &:hover {
-                        background-color: #3CCACE;
-                        color: white;
+                        background-color: $skyblue;
+                        color: $white;
                       }
                     }
                   }
@@ -247,13 +251,13 @@
         margin-left: auto;
         display: flex;
         &__item {
-          color: black;
+          color: $black;
           line-height: 38px;
           padding: 0 0 0 16px;
           > a {
             display: flex;
             align-items: center;
-            color: black;
+            color: $black;
             text-decoration: none;
             line-height: 32px;
           }
@@ -285,12 +289,12 @@
         text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
         font-size: 60px;
         line-height: 1.2;
-        color: #fff;
+        color: $white;
       }
       &__text {
         text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
         font-size: 18px;
-        color: #fff;
+        color: $white;
         line-height: 1.77778;
         margin: 16px 0 0 0;
       }
@@ -344,8 +348,8 @@
             text-align: center;
             margin: 0 5px 0 0;
             padding: 10px 20px;
-            background-color: #3ccace;
-            color: #fff;
+            background-color: $skyblue;
+            color: $white;
           }
           img {
             width: 100%;
@@ -358,7 +362,7 @@
           line-height: 50px;
           margin: 0 0 0 2px;
           span {
-            color: #3ccace;
+            color: $skyblue;
           }
         }
         &__description {
@@ -377,7 +381,7 @@
     display: flex;
     align-items: center;
     &__inner {
-      color: #fff;
+      color: $white;
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
       text-align: left;
       max-width: 1040px;
@@ -407,7 +411,7 @@
   }
   .topKeyFeatures {
     padding: 60px 100px;
-    background-color: #fff;
+    background-color: $white;
     .head {
       font-size: 27px;
       text-align: center;
@@ -420,7 +424,7 @@
         content: "";
         width: 70px;
         height: 4px;
-        background-color: #3ccace;
+        background-color: $skyblue;
         position: absolute;
         bottom: 0;
         left: 45%;
@@ -478,7 +482,7 @@
         a {
           font-size: 24px;
           text-decoration: none;
-          color: #3ccace;
+          color: $skyblue;
           h3 {
             font-weight: bold;
           }
@@ -509,13 +513,13 @@
               transform: rotate(-45deg);
               font-size: 28px;
               margin: -35px 0px 0px -55px;
-              color: #fff;
+              color: $white;
               letter-spacing: 2px;
               font-weight: 600;
             }
           }
           a {
-            background-color: #fff;
+            background-color: $white;
             display: inline-block;
             .productList--img {
               width: 220px;
@@ -537,8 +541,8 @@
               }
             }
             .productList--body {
-              background-color: white;
-              color: #333;
+              background-color: $white;
+              color: $black;
               padding: 16px;
               .name {
                 overflow: hidden;
@@ -573,7 +577,7 @@
   background-size: cover;
   background-position: center;
   .inner {
-    color: #fff;
+    color: $white;
     text-align: center;
     &__title {
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
@@ -604,7 +608,7 @@
 //出品ボタン
 .purchaseBtn {
   width: 120px;
-  background-color: #3ccace;
+  background-color: $skyblue;
   text-align: center;
   border-radius: 4%;
   bottom: 32px;
@@ -612,7 +616,7 @@
   position: fixed;
   padding: 15px;
   &__text {
-    color: #fff;
+    color: $white;
     display: block;
     font-size: 18px;
     text-decoration: none;
@@ -633,7 +637,7 @@
       margin: 0 auto;
       .topContent {
         .itemBox {
-          background-color: #fff;
+          background-color: $white;
           padding: 24px 40px 40px;
           &__name {
             text-align: center;
@@ -673,7 +677,7 @@
                     transform: rotate(-45deg);
                     font-size: 25px;
                     margin: -35px 0px 0px -55px;
-                    color: #fff;
+                    color: $white;
                     letter-spacing: 2px;
                     font-weight: 600;
                   }
@@ -742,7 +746,7 @@
                     font-size: 14px;
                     > a {
                       text-decoration: none;
-                      color: #3ccace;
+                      color: $skyblue;
                     }
                   }
                 }
@@ -762,15 +766,15 @@
                   margin-right: auto;
                   padding: 6px 10px;
                   border-radius: 40px;
-                  color: #3ccace;
+                  color: $skyblue;
                   border: 1px solid #ffb340;
                 }
                 .already {
                   margin-right: auto;
                   padding: 6px 10px;
                   border-radius: 40px;
-                  background-color: #3ccace;
-                  color: white;
+                  background-color: $skyblue;
+                  color: $white;
                 }
               }
               .buyBtn {
@@ -780,7 +784,7 @@
                 background-color: red;
                 > a{
                   text-decoration: none;
-                  color: white;
+                  color: $white;
                 }
 
               }
@@ -791,8 +795,8 @@
                   padding: 6px 10px;
                   display: inline-block;
                   border-radius: 4px;
-                  color: #333;
-                  border: 1px solid #333;
+                  color: $black;
+                  border: 1px solid $black;
                   text-decoration: none;
                 }
               }
@@ -801,8 +805,8 @@
           .userBtn {
             margin-top: 20px;
             > a{
-              border: 1px solid #272727;
-              border: 1px solid #272727;
+              border: 1px solid $black;
+              border: 1px solid $black;
               border-radius: 40px;
               font-size: 16px;
               padding: 20px 70px;
@@ -811,16 +815,16 @@
             }
             &__delete {
               background-color: red;
-              color: white;
+              color: $white;
             }
             &__edit {
-              background-color: #3ccace;
-              color: white;
+              background-color: $skyblue;
+              color: $white;
             }
           }
         }
         .edit-deleteBox{
-          background-color:#fff;
+          background-color:$white;
           padding-top:8px;
           padding-bottom:8px;
           margin-top:10px;
@@ -831,11 +835,11 @@
             font-size:14px;
             text-align: center;
             display:block;
-            color:white;
+            color:$white;
             margin:8px 16px;
           }
           .submit-btn-blue{
-            background-color: #3CCACE;
+            background-color: $skyblue;
           }
           .submit-btn-gray{
             background-color: #aaa;
@@ -846,7 +850,7 @@
         }
         .commentBox {
           padding: 24px;
-          background-color: #fff;
+          background-color: $white;
           margin: 10px 0;
           .comments{
             margin-bottom:10px;
@@ -874,7 +878,7 @@
                   min-height:40px;
                   max-height: 300px;
                   line-height: 25px;
-                  border: 3px solid #3CCACE;
+                  border: 3px solid $skyblue;
                   z-index: 0;
                   border-radius: 10px;
                   display: flex;
@@ -884,7 +888,7 @@
                 .message-text:before{
                   border-style: solid;
                   border-width: 10px 10px 10px 0;
-                  border-color: transparent #ffffff transparent transparent;
+                  border-color: transparent $white transparent transparent;
                   content: "";
                   position: absolute;
                   top: 50%; left: -8px;
@@ -897,7 +901,7 @@
                 .message-text:after{
                   border-style: solid;
                   border-width: 11px 11px 11px 0;
-                  border-color: transparent #3CCACE transparent transparent;
+                  border-color: transparent $skyblue transparent transparent;
                   content: "";
                   position: absolute;
                   top: 50%; left: -12px;
@@ -930,7 +934,7 @@
                 line-height: 48px;
                 background-color: #aaa;
                 border: 1px solid #aaa;
-                color: #fff;
+                color: $white;
                 width: 60%;
                 font-size: 18px;
                 border-radius: 100px;
@@ -940,9 +944,9 @@
               }
               button {
                 line-height: 48px;
-                background-color: #3ccace;
-                border: 1px solid #3ccace;
-                color: #fff;
+                background-color: $skyblue;
+                border: 1px solid $skyblue;
+                color: $white;
                 width: 60%;
                 font-size: 18px;
                 border-radius: 100px;
@@ -958,7 +962,7 @@
           float: left;
           a {
             text-decoration: none;
-            color: #3ccace;
+            color: $skyblue;
           }
         }
         li:last-child {
@@ -969,7 +973,7 @@
         a {
           display: block;
           margin: 40px 0 8px;
-          color: #3ccace;
+          color: $skyblue;
           text-decoration: none;
           font-weight: bold;
           font-size: 22px;
@@ -985,7 +989,7 @@
   &__inner {
     display: flex;
     max-width: 1000px;
-    background-color: white;
+    background-color:$white;
     margin: 0 auto;
     padding: 20px 0px;
     .detailSearch {
@@ -1036,7 +1040,7 @@
             background-color: red;
             cursor: pointer;
             text-decoration: none;
-            color: #ffffff;
+            color: $white;
             line-height: 60px;
             margin: 0 auto;
             text-align: center;
@@ -1046,11 +1050,11 @@
           display: block;
           width: 100px;
           height: 60px;
-          background-color:#3ccace;
-          border: #3ccace;
+          background-color:$skyblue;
+          border: $skyblue;
           cursor: pointer;
           text-decoration: none;
-          color: #ffffff;
+          color: $white;
           line-height: 60px;
           margin: 0 auto;
           text-align: center;
@@ -1070,7 +1074,7 @@
         padding: 20px;
         a {
           text-decoration: none;
-          color: black;
+          color: $black;
           li {
             background-color: #f8f8f8;
             padding: 10px 0px;
@@ -1093,7 +1097,7 @@
               line-height: 60px;
             }
             &:hover {
-              background-color: #3ccace;
+              background-color: $skyblue;
               opacity: 0.6;
           }
           }
